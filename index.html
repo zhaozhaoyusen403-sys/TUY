@@ -284,7 +284,8 @@ function renderPosts(){
     <div class="post">
       <div class="top"><span>@${p.n}</span><span>${p.time}</span></div>
       <div class="txt">${p.t}</div>
-      <div class="act"><b onclick="like(${i})">♡ ${p.like}</b>
+      <div 
+      class="act"><b onclick="like(${i})">♡ ${p.like}</b>
         <b onclick="cmt(${i})">💬 ${p.cmts.length}</b></div>
       <div class="cmt">${p.cmts.map(c=>`<div>${c}</div>`).join('')}</div>
     </div>`).join('')||'<p style="color:#9a9aa2">还没有内容，来发第一条吧</p>';
@@ -299,6 +300,16 @@ function applyJoin(){
 }
 
 render();renderPosts();
-</script>
+</script><!-- 底部联系区域 -->
+<footer style="text-align:center; padding:40px 20px; margin-top:20px; font-size:14px; color:#999; border-top:1px solid #333;">
+  <p style="margin:0 0 10px 0;">品牌入驻 / 合作咨询</p>
+  <p style="margin:0;">
+    📮 邮箱：<span id="contact-mail" style="cursor:pointer; color:#0070f3; text-decoration:underline;" onclick="document.getElementById('contact-mail').innerText='zys20071129@qq.com'; this.removeAttribute('onclick');">点击此处显示</span>
+  </p>
+</footer>
+
+
+
+  
 </body>
 </html>
