@@ -109,7 +109,7 @@ h2.title{font-size:clamp(30px,5vw,52px);font-weight:700;letter-spacing:-.03em;li
 .search{flex:1;min-width:220px;position:relative}
 .search input{width:100%;padding:12px 16px 12px 42px;background:var(--card);border:1px solid var(--line);border-radius:980px;color:var(--txt);font-size:14px;outline:none;transition:.3s var(--ease)}
 .search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,0,.12)}
-.search::before{content:"\2295";position:absolute;left:16px;top:50%;transform:translateY(-52%);color:var(--dim);font-size:17px}
+.search::before{content:"\263A";position:absolute;left:16px;top:50%;transform:translateY(-52%);color:var(--dim);font-size:17px}
 select.sort{padding:12px 16px;background:var(--card);border:1px solid var(--line);border-radius:980px;color:var(--sub);font-size:13px;outline:none;cursor:pointer;-webkit-appearance:none;appearance:none;padding-right:36px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a1a1a6' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
 .count{font-size:12.5px;color:var(--dim);margin-bottom:18px}
 /* ===== 产品卡片 ===== */
@@ -766,7 +766,7 @@ document.querySelectorAll('.card').forEach(c=>c.onclick=()=>{const d=DATA[c.data
 const closeM=()=>{modal.classList.remove('on');document.body.style.overflow=''};
 document.getElementById('mClose').onclick=closeM;
 modal.onclick=e=>{if(e.target===modal)closeM()};
-addEventListener('keydown',e=>{if(e.key==='Escape'){closeM();closeP()}});
+addEventListener('keydown',e=>{if(e.key==='Escape'){closeAllModals()}});
 
 /* 表单 */
 document.getElementById('applyForm').addEventListener('submit',e=>{
@@ -909,9 +909,29 @@ function createPostCard(post) {
 
 // 渲染各分区
 function renderCommunity() {
+  // 保存当前点赞状态
+  var likedPosts = {};
+  document.querySelectorAll('.action-btn.like-btn.liked').forEach(function(btn) {
+    var postId = btn.getAttribute('onclick').match(/,\s*(\d+)/);
+    if (postId) likedPosts[postId[1]] = true;
+  });
+  
   document.getElementById('merchantFeed').innerHTML = COMMUNITY_POSTS.merchant.map(p => createPostCard(p)).join('');
   document.getElementById('customerFeed').innerHTML = COMMUNITY_POSTS.customer.map(p => createPostCard(p)).join('');
   document.getElementById('featuredFeed').innerHTML = COMMUNITY_POSTS.featured.map(p => createPostCard(p)).join('');
+  
+  // 恢复点赞状态
+  Object.keys(likedPosts).forEach(function(id) {
+    var btn = document.querySelector('.action-btn.like-btn[onclick*="' + id + '"]');
+    if (btn) {
+      btn.classList.add('liked');
+      var post = COMMUNITY_POSTS.merchant.concat(COMMUNITY_POSTS.customer, COMMUNITY_POSTS.featured).find(function(p){return p.id == id});
+      if (post) {
+        var countEl = btn.querySelector('.like-count');
+        if (countEl) countEl.textContent = post.likes;
+      }
+    }
+  });
 }
 
 // Tab切换
@@ -1007,7 +1027,7 @@ function toggleLike(btn, postId, type) {
     } else {
       post.likes--;
       countEl.textContent = post.likes;
-      btn.querySelector('.heart').textContent = '♥';
+      btn.querySelector('.heart').textContent = '\u2661';
     }
   }
 }
@@ -1018,8 +1038,16 @@ function sharePost() {
     navigator.share({ title: 'TUY社区', url: window.location.href });
   } else {
     navigator.clipboard.writeText(window.location.href);
-    alert('链接已复制到剪贴板');
+    var tip = document.createElement('div'); tip.textContent = '链接已复制到剪贴板'; tip.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:var(--accent);color:#000;padding:10px 24px;border-radius:980px;font-size:14px;font-weight:600;z-index:9999;animation:fadeIn .3s'; document.body.appendChild(tip); setTimeout(function(){tip.remove()}, 2000);
   }
+}
+
+// 关闭所有弹窗
+function closeAllModals() {
+  document.querySelectorAll('.modal.on').forEach(m => {
+    m.classList.remove('on');
+    document.body.style.overflow = '';
+  });
 }
 
 // 查看品牌帖子（从顾客帖子跳转到品牌）
@@ -1086,7 +1114,7 @@ function addComment(btn) {
   if (!input.value.trim()) return;
   
   const commentHtml = '<div class="comment" style="animation:fadeIn .4s var(--ease)"><div class="comment-avatar">我</div><div class="comment-content"><div class="comment-author">我</div><div class="comment-text">' + input.value + '</div><div class="comment-time">刚刚</div></div></div>';
-  btn.previousElementSibling.insertAdjacentHTML('beforebegin', commentHtml);
+  btn.parentElement.parentElement.insertAdjacentHTML('beforebegin', commentHtml);
   input.value = '';
 }
 
