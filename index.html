@@ -2,1139 +2,218 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TUY · 小众原创设计品牌聚集地</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="TUY — 收录小众原创设计品牌，不做销售，只做甄选与导流。">
+<meta property="og:title" content="TUY · 原创设计值得被看见">
+<meta property="og:description" content="收录小众原创品牌，把流量还给创作者。">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0a0a0c">
+<title>TUY · 原创设计值得被看见</title>
 <style>
 :root{
-  --bg:#000; --bg2:#0a0a0b; --card:#111113; --line:rgba(255,255,255,.08);
-  --txt:#f5f5f7; --sub:#a1a1a6; --dim:#6e6e73; --accent:#c8ff00;
-  --ease:cubic-bezier(.16,1,.3,1);
+  --bg:#0a0a0c;--sf:#111114;--bd:#1c1c22;--tx:#e4e4e8;--mu:#888;
+  --ac:#c9f31d;--ac-d:rgba(201,243,29,.08);
+  --rs:6px;--rm:10px;--rl:14px;--rp:999px;
 }
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Helvetica Neue",Arial,sans-serif;
-  background:var(--bg);color:var(--txt);line-height:1.6;letter-spacing:-.01em;
-  opacity:0;transition:opacity .6s ease;
-}
-body.loaded{opacity:1}
-img{max-width:100%;display:block}
+body{font-family:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+button,input,textarea,select{font:inherit;color:inherit}
+img{display:block;max-width:100%}
+.skip{position:absolute;top:-100%;left:16px;padding:8px 16px;background:var(--ac);color:#0a0a0c;border-radius:var(--rm);z-index:999;font-size:13px;font-weight:700}
+.skip:focus{top:12px}
 
-/* ===== 导航 ===== */
-header{
-  position:fixed;top:0;left:0;right:0;z-index:100;height:64px;
-  display:flex;align-items:center;
-  background:rgba(0,0,0,.55);backdrop-filter:blur(20px) saturate(180%);
-  -webkit-backdrop-filter:blur(20px) saturate(180%);
-  border-bottom:1px solid transparent;transition:.4s var(--ease);
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 20px;transition:background .3s,border .3s}
+nav.s{background:rgba(10,10,12,.92);border-bottom:1px solid var(--bd);backdrop-filter:blur(12px)}
+.ni{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+.lo{font-size:22px;font-weight:900;letter-spacing:6px;color:var(--ac)}
+.nl{display:flex;gap:24px;list-style:none}
+.nl a{font-size:14px;color:var(--mu);position:relative;transition:color .25s}
+.nl a::after{content:"";position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--ac);transition:width .3s}
+.nl a:hover{color:var(--tx)}
+.nl a:hover::after{width:100%}
+.br{display:none;background:none;border:none;font-size:22px;color:var(--tx);cursor:pointer}
+
+/* ── HERO ── */
+.he{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;position:relative;overflow:hidden}
+.he::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(201,243,29,.04) 0%,transparent 60%);pointer-events:none}
+.he h1{font-size:clamp(36px,10vw,64px);font-weight:900;letter-spacing:2px;line-height:1.15}
+.he h1 span{color:var(--ac)}
+.he .sub{margin-top:16px;font-size:clamp(14px,3vw,16px);color:var(--mu);max-width:420px}
+.hb{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.bn{padding:12px 28px;border-radius:var(--rp);font-size:14px;font-weight:600;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.bn:active{transform:scale(.96)}
+.bp{background:var(--ac);color:#0a0a0c}
+.bp:hover{box-shadow:0 0 24px rgba(201,243,29,.25)}
+.bg2{background:transparent;border:1.5px solid var(--bd)}
+.bg2:hover{border-color:var(--mu)}
+
+/* ── SECTIONS ── */
+section{padding:64px 0}
+.ct{max-width:1120px;margin:0 auto;padding:0 20px}
+.sh{text-align:center;margin-bottom:32px}
+.sh h2{font-size:clamp(20px,5vw,28px);font-weight:800;letter-spacing:1px}
+.sh p{margin-top:8px;color:var(--mu);font-size:14px}
+
+/* ── EMPTY STATE ── */
+.es{text-align:center;padding:60px 20px}
+.es .ic{font-size:40px;margin-bottom:16px;opacity:.3}
+.es h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.es p{color:var(--mu);font-size:14px;max-width:360px;margin:0 auto 20px}
+
+/* ── FORM ── */
+.fg{max-width:480px;margin:0 auto;display:grid;gap:14px}
+.fg input,.fg textarea,.fg select{width:100%;padding:12px 14px;border-radius:var(--rm);border:1.5px solid var(--bd);background:var(--sf);font-size:14px;outline:none;transition:border-color .2s}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--ac)}
+.fl{font-size:13px;color:var(--mu)}
+.fd{display:grid;gap:4px}
+.fh{font-size:13px;color:var(--mu);line-height:1.5}
+
+/* ── ABOUT ── */
+.av{text-align:center;max-width:520px;margin:0 auto;font-size:15px;color:var(--mu);line-height:1.9}
+.av strong{color:var(--tx);font-weight:700}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:32px 20px;border-top:1px solid var(--bd);font-size:13px;color:var(--mu)}
+
+/* ── MODAL ── */
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:none;align-items:center;justify-content:center;padding:16px}
+.ov.o{display:flex}
+.md{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rl);width:min(460px,100%);max-height:85vh;overflow-y:auto;padding:24px;position:relative}
+.mx{position:absolute;top:12px;right:12px;background:var(--bd);border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;color:var(--tx);font-size:16px;display:flex;align-items:center;justify-content:center}
+.md h3{font-size:17px;font-weight:800}
+.md .su{color:var(--ac);font-size:13px;margin-top:4px}
+.md .st{margin-top:14px;font-size:14px;line-height:1.8;color:#bbb}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+.rv.v{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .nl{display:none;position:absolute;top:56px;left:0;right:0;background:var(--bg);flex-direction:column;padding:16px;gap:16px;border-bottom:1px solid var(--bd)}
+  .nl.o{display:flex}
+  .br{display:block}
+  .he h1{font-size:32px}
 }
-header.shrink{height:54px;border-bottom-color:var(--line);background:rgba(0,0,0,.75)}
-.nav{width:100%;max-width:1120px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:20px;font-weight:700;letter-spacing:.18em}
-.logo i{font-style:normal;color:var(--accent)}
-nav{display:flex;gap:34px}
-nav a{font-size:13px;color:var(--sub);transition:color .3s}
-nav a:hover,nav a.on{color:var(--txt)}
-.burger{display:none;width:40px;height:40px;border:none;background:none;cursor:pointer;position:relative}
-.burger span{position:absolute;left:9px;width:22px;height:1.5px;background:var(--txt);transition:.3s var(--ease)}
-.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
-.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-.burger.open span:nth-child(2){opacity:0}
-.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-
-/* ===== 首屏 ===== */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;width:900px;height:900px;border-radius:50%;
-  background:radial-gradient(circle,rgba(200,255,0,.10),transparent 62%);top:-320px;filter:blur(20px)}
-.hero h1{font-size:clamp(56px,11vw,132px);font-weight:700;letter-spacing:-.04em;line-height:1.02}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero .sub{margin-top:22px;font-size:clamp(16px,2.4vw,22px);color:var(--sub);font-weight:400;max-width:620px}
-.hero .cta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
-.btn{padding:12px 26px;border-radius:980px;font-size:14px;font-weight:500;transition:.3s var(--ease);border:1px solid transparent;cursor:pointer}
-.btn.solid{background:var(--accent);color:#000}
-.btn.solid:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(200,255,0,.25)}
-.btn.ghost{border-color:rgba(255,255,255,.25);color:var(--txt)}
-.btn.ghost:hover{border-color:var(--txt);background:rgba(255,255,255,.06)}
-.scroll-hint{position:absolute;bottom:34px;font-size:11px;color:var(--dim);letter-spacing:.3em;animation:float 2.4s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(8px);opacity:1}}
-
-/* ===== 滚动字幕 ===== */
-.ticker{border-block:1px solid var(--line);overflow:hidden;padding:14px 0;background:var(--bg2)}
-.ticker div{display:inline-block;white-space:nowrap;animation:mq 28s linear infinite;font-size:12px;letter-spacing:.35em;color:var(--dim)}
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* ===== 区块 ===== */
-section{padding:120px 0}
-.eyebrow{font-size:12px;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;margin-bottom:14px}
-h2.title{font-size:clamp(30px,5vw,52px);font-weight:700;letter-spacing:-.03em;line-height:1.15}
-.lead{margin-top:16px;color:var(--sub);font-size:clamp(15px,2vw,18px);max-width:640px}
-
-/* 渐显动画 */
-.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.rv.in{opacity:1;transform:none}
-
-/* ===== 品牌 ===== */
-.filters{display:flex;gap:10px;flex-wrap:wrap;margin:36px 0 40px}
-.filters button{padding:8px 18px;border-radius:980px;border:1px solid var(--line);background:none;color:var(--sub);font-size:13px;cursor:pointer;transition:.3s var(--ease)}
-.filters button:hover{color:var(--txt);border-color:rgba(255,255,255,.3)}
-.filters button.on{background:var(--txt);color:#000;border-color:var(--txt)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;transition:.5s var(--ease)}
-.card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.18);box-shadow:0 24px 60px rgba(0,0,0,.6)}
-.card .cover{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:52px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.9);position:relative;overflow:hidden}
-.card .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.55));opacity:0;transition:.4s}
-.card:hover .cover::after{opacity:1}
-.card .cover b{transition:.7s var(--ease)}
-.card:hover .cover b{transform:scale(1.08)}
-.card .more{position:absolute;left:16px;bottom:16px;font-size:12px;padding:7px 16px;border-radius:980px;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);opacity:0;transform:translateY(10px);transition:.4s var(--ease)}
-.card:hover .more{opacity:1;transform:none}
-.card .body{padding:20px 20px 22px}
-.card h3{font-size:18px;font-weight:600;letter-spacing:-.01em}
-.card p{margin-top:8px;font-size:13.5px;color:var(--sub);min-height:42px}
-.tags{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
-.tag{font-size:11px;padding:4px 11px;border-radius:980px;border:1px solid var(--line);color:var(--dim)}
-.links{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
-.links a{font-size:11.5px;padding:5px 12px;border-radius:980px;background:rgba(255,255,255,.06);color:var(--sub);transition:.3s}
-.links a:hover{background:var(--accent);color:#000}
-.g1{background:linear-gradient(135deg,#1c2b23,#0d1a12)}
-.g2{background:linear-gradient(135deg,#2b2418,#161009)}
-.g3{background:linear-gradient(135deg,#182430,#0b1219)}
-.g4{background:linear-gradient(135deg,#2a1c2b,#140d16)}
-.g5{background:linear-gradient(135deg,#232323,#0e0e0e)}
-
-/* ===== 产品工具栏 ===== */
-.toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:34px 0 8px}
-.search{flex:1;min-width:220px;position:relative}
-.search input{width:100%;padding:12px 16px 12px 42px;background:var(--card);border:1px solid var(--line);border-radius:980px;color:var(--txt);font-size:14px;outline:none;transition:.3s var(--ease)}
-.search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,0,.12)}
-.search::before{content:"\263A";position:absolute;left:16px;top:50%;transform:translateY(-52%);color:var(--dim);font-size:17px}
-select.sort{padding:12px 16px;background:var(--card);border:1px solid var(--line);border-radius:980px;color:var(--sub);font-size:13px;outline:none;cursor:pointer;-webkit-appearance:none;appearance:none;padding-right:36px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a1a1a6' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
-.count{font-size:12.5px;color:var(--dim);margin-bottom:18px}
-/* ===== 产品卡片 ===== */
-.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
-.pcard{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;transition:.5s var(--ease)}
-.pcard:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.18);box-shadow:0 24px 60px rgba(0,0,0,.6)}
-.pcov{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.pcov b{font-size:40px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.92);transition:.7s var(--ease)}
-.pcard:hover .pcov b{transform:scale(1.07)}
-.pcov::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.5));opacity:0;transition:.4s}
-.pcard:hover .pcov::after{opacity:1}
-.badge{position:absolute;top:12px;left:12px;font-size:10.5px;padding:4px 11px;border-radius:980px;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);letter-spacing:.08em}
-.badge.new{background:var(--accent);color:#000}
-.pbody{padding:16px 16px 18px}
-.pbody .brand{font-size:11.5px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
-.pbody h3{font-size:16px;font-weight:600;margin-top:5px;letter-spacing:-.01em}
-.prow{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
-.price{font-size:17px;font-weight:700;letter-spacing:-.02em}
-.price small{font-size:12px;font-weight:400;color:var(--dim)}
-.ptag{font-size:11px;color:var(--dim)}
-.empty{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--dim);font-size:14px}
-/* ===== 产品详情弹窗 ===== */
-.mprice{font-size:26px;font-weight:700;margin:6px 0 4px}
-.buy{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
-.buy a{flex:1;min-width:120px;text-align:center;padding:12px;border-radius:12px;font-size:13.5px;font-weight:500;border:1px solid var(--line);color:var(--txt);transition:.3s var(--ease)}
-.buy a:hover{border-color:var(--accent);background:rgba(200,255,0,.08)}
-.buy a.pri{background:var(--accent);color:#000;border-color:var(--accent)}
-.note{margin-top:16px;font-size:12px;color:var(--dim);text-align:center}
-.g6{background:linear-gradient(135deg,#1b2b2b,#0c1616)}
-
-/* ===== 关于 ===== */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-.about p{color:var(--sub);font-size:16px;margin-bottom:18px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
-.stats div{background:var(--card);padding:30px 24px}
-.stats b{display:block;font-size:34px;font-weight:700;letter-spacing:-.03em}
-.stats span{font-size:13px;color:var(--dim)}
-
-/* ===== 入驻表单 ===== */
-.form{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:36px;margin-top:44px}
-.fg{margin-bottom:22px}
-.fg label{display:block;font-size:13px;color:var(--sub);margin-bottom:8px}
-.fg label i{font-style:normal;color:var(--accent)}
-.fg input,.fg textarea,.fg select{
-  width:100%;padding:13px 15px;background:#0d0d0f;border:1px solid var(--line);
-  border-radius:12px;color:var(--txt);font-size:14px;font-family:inherit;outline:none;transition:.3s var(--ease)
+@media print{
+  nav,.hb,.br,.mx,footer{display:none!important}
+  .ov{position:static;background:none}
+  .md{max-height:none;box-shadow:none;border:1px solid #ccc}
 }
-.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,0,.12)}
-.fg textarea{min-height:110px;resize:vertical}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.subhead{font-size:12px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin:34px 0 18px;padding-top:26px;border-top:1px solid var(--line)}
-.chips{display:flex;gap:10px;flex-wrap:wrap}
-.chips label{display:flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid var(--line);border-radius:980px;font-size:13px;color:var(--sub);cursor:pointer;transition:.3s}
-.chips input{display:none}
-.chips label:has(input:checked){border-color:var(--accent);color:var(--txt);background:rgba(200,255,0,.08)}
-.submit{width:100%;padding:15px;border:none;border-radius:980px;background:var(--accent);color:#000;font-size:15px;font-weight:600;cursor:pointer;transition:.3s var(--ease)}
-.submit:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,255,0,.25)}
-.hint{margin-top:14px;text-align:center;font-size:12px;color:var(--dim)}
-.ok{display:none;text-align:center;padding:40px 20px}
-.ok.on{display:block;animation:pop .6s var(--ease)}
-@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
-.ok i{display:inline-flex;width:56px;height:56px;border-radius:50%;background:rgba(200,255,0,.14);color:var(--accent);align-items:center;justify-content:center;font-size:26px;font-style:normal;margin-bottom:16px}
-.ok h3{font-size:22px;margin-bottom:8px}
-.ok p{color:var(--sub);font-size:14px}
-
-/* ===== 弹窗 ===== */
-.modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.7);backdrop-filter:blur(12px)}
-.modal.on{display:flex;animation:fade .3s}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-.mbox{width:100%;max-width:560px;max-height:84vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px;position:relative}
-.mbox .close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--sub);cursor:pointer;font-size:16px}
-.mbox h3{font-size:26px;letter-spacing:-.02em}
-.mbox .m-sub{color:var(--dim);font-size:13px;margin:6px 0 20px}
-.mbox h4{font-size:12px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin:22px 0 8px}
-.mbox p{color:var(--sub);font-size:14.5px}
-.mbox .links a{font-size:13px;padding:8px 16px}
-
-/* ===== 底部 ===== */
-footer{border-top:1px solid var(--line);padding:64px 0 40px;background:var(--bg2)}
-.fgrid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
-footer h5{font-size:13px;letter-spacing:.14em;color:var(--dim);text-transform:uppercase;margin-bottom:14px}
-footer li{list-style:none;margin-bottom:10px;font-size:14px;color:var(--sub)}
-footer li a:hover{color:var(--txt)}
-.copy{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:12px;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-#mail{cursor:pointer;color:var(--accent)}
-
-/* 回到顶部 */
-#top{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);
-  background:rgba(20,20,22,.8);backdrop-filter:blur(10px);color:var(--txt);cursor:pointer;
-  opacity:0;transform:translateY(16px);pointer-events:none;transition:.4s var(--ease);z-index:90}
-#top.on{opacity:1;transform:none;pointer-events:auto}
-#top:hover{background:var(--accent);color:#000;border-color:var(--accent)}
-
-/* 响应式 */
-@media(max-width:820px){
-  nav{position:fixed;inset:64px 0 auto 0;flex-direction:column;gap:0;background:rgba(0,0,0,.94);
-      backdrop-filter:blur(20px);padding:8px 24px 20px;transform:translateY(-120%);transition:.4s var(--ease);border-bottom:1px solid var(--line)}
-  nav.open{transform:none}
-  nav a{padding:14px 0;font-size:16px;border-bottom:1px solid var(--line)}
-  .burger{display:block}
-  .about{grid-template-columns:1fr;gap:36px}
-  .two{grid-template-columns:1fr}
-  section{padding:80px 0}
-    .pgrid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
-.form{padding:24px}
-}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
-
-/* ===== 社区 ===== */
-.community-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:36px 0 30px;align-items:center}
-.tab-btn{padding:9px 20px;border-radius:980px;border:1px solid var(--line);background:none;color:var(--sub);font-size:13px;cursor:pointer;transition:.3s var(--ease)}
-.tab-btn:hover{color:var(--txt);border-color:rgba(255,255,255,.3)}
-.tab-btn.on{background:var(--txt);color:#000;border-color:var(--txt)}
-.tab-btn.post-btn{background:var(--accent);color:#000;border-color:var(--accent);font-weight:600}
-.tab-btn.post-btn:hover{box-shadow:0 8px 24px rgba(200,255,0,.25)}
-
-/* 发帖面板 */
-.post-panel{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px;margin-bottom:36px;position:relative;animation:slideDown .4s var(--ease)}
-@keyframes slideDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
-.post-panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
-.post-panel-header h3{font-size:20px;font-weight:600}
-.close-panel{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--sub);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:.3s}
-.close-panel:hover{background:var(--line);color:var(--txt)}
-.community-form .fg{margin-bottom:18px}
-.community-form .chips label{padding:8px 14px}
-
-/* 内容流 */
-.feed{display:flex;flex-direction:column;gap:24px}
-.post-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;transition:.4s var(--ease);animation:fadeIn .6s var(--ease)}
-@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.post-card:hover{border-color:rgba(255,255,255,.15);box-shadow:0 12px 40px rgba(0,0,0,.4)}
-
-/* 帖子头部 */
-.post-header-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
-.post-author{display:flex;gap:12px;align-items:center}
-.post-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
-.post-avatar.merchant{background:linear-gradient(135deg,#c8ff00,#8ab800);color:#000}
-.post-avatar.customer{background:linear-gradient(135deg,#6e6e73,#3a3a3c);color:#fff}
-.post-avatar.featured{background:linear-gradient(135deg,#ffd700,#ff8c00);color:#000}
-.post-info h4{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px}
-.post-info .badge{font-size:10px;padding:2px 8px;border-radius:980px}
-.badge.merchant-badge{background:rgba(200,255,0,.15);color:var(--accent);border:1px solid rgba(200,255,0,.3)}
-.badge.featured-badge{background:rgba(255,215,0,.15);color:#ffd700;border:1px solid rgba(255,215,0,.3)}
-.badge.customer-badge{background:rgba(255,255,255,.08);color:var(--sub)}
-.post-time{font-size:12px;color:var(--dim);margin-top:2px}
-.post-more{color:var(--dim);cursor:pointer;font-size:18px;padding:4px 8px;transition:.3s}
-.post-more:hover{color:var(--txt)}
-
-/* 帖子正文 */
-.post-title{font-size:17px;font-weight:600;margin-bottom:8px;letter-spacing:-.01em}
-.post-text{color:var(--sub);font-size:14.5px;line-height:1.7;margin-bottom:16px}
-.post-text.expanded{white-space:pre-wrap}
-.post-text.truncate{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-
-/* 帖子图片 */
-.post-images{display:grid;gap:8px;margin-bottom:16px;border-radius:14px;overflow:hidden}
-.post-images.img-1{grid-template-columns:1fr}
-.post-images.img-2{grid-template-columns:1fr 1fr}
-.post-images.img-3{grid-template-columns:1fr 1fr}
-.post-images.img-3 .post-img:nth-child(3){grid-column:1/-1}
-.post-images.img-4{grid-template-columns:1fr 1fr}
-.post-images.img-5{grid-template-columns:1fr 1fr 1fr}
-.post-img{aspect-ratio:1/1;object-fit:cover;width:100%;cursor:pointer;transition:.3s}
-.post-img:hover{opacity:.9}
-.post-img-placeholder{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:32px;background:var(--bg2);color:var(--dim)}
-
-/* 帖子操作栏 */
-.post-actions-row{display:flex;gap:20px;align-items:center;padding-top:14px;border-top:1px solid var(--line)}
-.action-btn{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--sub);cursor:pointer;transition:.3s;background:none;border:none;font-family:inherit}
-.action-btn:hover{color:var(--txt)}
-.action-btn.liked{color:#ff4757}
-.action-btn.liked .heart{animation:heartPop .4s var(--ease)}
-@keyframes heartPop{0%{transform:scale(1)}50%{transform:scale(1.3)}100%{transform:scale(1)}}
-.action-btn .icon{font-size:17px}
-
-/* 帖子详情弹窗 */
-.mbox--large{max-width:640px}
-.post-detail-header{margin-bottom:20px}
-.post-detail-header .post-header-row{margin-bottom:16px}
-.post-detail-title{font-size:22px;font-weight:700;margin-bottom:12px}
-.post-detail-text{color:var(--sub);font-size:15px;line-height:1.8;margin-bottom:20px;white-space:pre-wrap}
-.post-detail-images{display:grid;gap:10px;margin-bottom:24px;border-radius:16px;overflow:hidden}
-.post-detail-images.img-1{grid-template-columns:1fr}
-.post-detail-images.img-2{grid-template-columns:1fr 1fr}
-.post-detail-images.img-3{grid-template-columns:1fr 1fr}
-.post-detail-images.img-3 .post-img:nth-child(3){grid-column:1/-1}
-.post-detail-images.img-4{grid-template-columns:1fr 1fr}
-.post-detail-images.img-5{grid-template-columns:1fr 1fr 1fr}
-.post-detail-img{aspect-ratio:4/3;object-fit:cover;width:100%}
-.post-detail-img-placeholder{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:48px;background:var(--bg2);color:var(--dim)}
-.post-detail-actions{display:flex;gap:24px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:24px}
-.comment-section h4{font-size:14px;font-weight:600;margin-bottom:14px;color:var(--txt)}
-.comment{display:flex;gap:10px;margin-bottom:16px}
-.comment-avatar{width:32px;height:32px;border-radius:50%;background:var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;color:var(--sub)}
-.comment-content{flex:1}
-.comment-content .comment-author{font-size:13px;font-weight:600;margin-bottom:3px}
-.comment-content .comment-text{font-size:13px;color:var(--sub);line-height:1.6}
-.comment-content .comment-time{font-size:11px;color:var(--dim);margin-top:4px}
-.comment-input-row{display:flex;gap:10px;margin-top:18px}
-.comment-input-row input{flex:1;padding:11px 15px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;color:var(--txt);font-size:13px;outline:none;transition:.3s}
-.comment-input-row input:focus{border-color:var(--accent)}
-.comment-input-row button{padding:11px 20px;border-radius:980px;background:var(--accent);color:#000;border:none;font-size:13px;font-weight:600;cursor:pointer;transition:.3s var(--ease)}
-.comment-input-row button:hover{box-shadow:0 6px 20px rgba(200,255,0,.25)}
-
-/* 无内容提示 */
-.empty-feed{text-align:center;padding:60px 20px;color:var(--dim);font-size:14px}
-.empty-feed .icon{font-size:48px;margin-bottom:16px;display:block}
-
-/* 品牌跳转标签 */
-.post-brand-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:7px 14px;border-radius:980px;border:1px solid var(--line);font-size:12px;color:var(--sub);transition:.3s;cursor:pointer;background:none;font-family:inherit}
-.post-brand-link:hover{border-color:var(--accent);color:var(--accent)}
-
 </style>
 </head>
 <body>
 
-<header id="hd">
-  <div class="nav">
-    <a class="logo" href="#top-page">TUY<i>.</i></a>
-    <nav id="menu">
-      <a href="#products">产品</a>
-      <a href="#community">社区</a>
-      <a href="#brands">品牌</a>
-      <a href="#about">关于</a>
-      <a href="#apply">入驻</a>
-      <a href="#contact">联系</a>
-    </nav>
-    <button class="burger" id="burger" aria-label="菜单"><span></span><span></span><span></span></button>
-  </div>
-</header>
+<a href="#main" class="skip">跳到主要内容</a>
 
-<!-- 首屏 -->
-<section class="hero" id="top-page">
-  <h1 class="rv">TUY<em>.</em></h1>
-  <p class="sub rv">小众原创设计品牌的聚集地。<br>我们不做销售，只为真正的设计，找到对的人。</p>
-  <div class="cta rv">
-    <a class="btn solid" href="#products">逛逛产品</a>
-    <a class="btn ghost" href="#community">进入社区</a>
-    <a class="btn ghost" href="#brands">全部品牌</a>
-  </div>
-  <div class="scroll-hint">SCROLL</div>
-</section>
+<nav id="nav"><div class="ni">
+  <a href="#" class="lo">TUY</a>
+  <button class="br" id="br2" aria-label="菜单" aria-expanded="false">☰</button>
+  <ul class="nl" id="nl2">
+    <li><a href="#curated">甄选</a></li>
+    <li><a href="#apply">入驻</a></li>
+    <li><a href="#about">关于</a></li>
+  </ul>
+</div></nav>
 
-<!-- 滚动字幕 -->
-<div class="ticker"><div>原创设计 · 独立品牌 · 品控严选 · 潮流态度 · 小众美学 · 原创设计 · 独立品牌 · 品控严选 · 潮流态度 · 小众美学 · </div></div>
+<main id="main">
 
-
-<!-- ===== 产品（顾客视角） ===== -->
-<section id="products">
-  <div class="wrap">
-    <div class="eyebrow rv">Products</div>
-    <h2 class="title rv">精选产品</h2>
-    <p class="lead rv">按品类、价格挑选你喜欢的那一件。点击卡片查看材质与购买渠道，交易在品牌官方店铺完成。</p>
-
-    <div class="toolbar rv">
-      <div class="search"><input type="text" id="q" placeholder="搜索产品或品牌，例如「银饰」「帆布包」"></div>
-      <select class="sort" id="sort">
-        <option value="rec">推荐排序</option>
-        <option value="new">最新上架</option>
-        <option value="low">价格从低到高</option>
-        <option value="high">价格从高到低</option>
-      </select>
-    </div>
-    <div class="filters rv" id="pfilters">
-      <button class="on" data-f="all">全部</button>
-      <button data-f="服装">服装</button>
-      <button data-f="鞋履">鞋履</button>
-      <button data-f="包袋">包袋</button>
-      <button data-f="首饰">首饰</button>
-      <button data-f="配饰">配饰</button>
-      <button data-f="生活方式">生活方式</button>
-    </div>
-    <div class="count" id="count"></div>
-    <div class="pgrid" id="pgrid"></div>
+<!-- HERO -->
+<section class="he">
+  <h1>原创设计<br><span>值得被看见</span></h1>
+  <p class="sub">TUY 收录小众原创品牌，不做销售，只做甄选与导流。把流量还给创作者。</p>
+  <div class="hb">
+    <a href="#apply" class="bn bp">申请入驻</a>
+    <a href="#curated" class="bn bg2">了解甄选</a>
   </div>
 </section>
 
-<!-- 品牌 -->
-<section id="brands">
-  <div class="wrap">
-    <div class="eyebrow rv">Brands</div>
-    <h2 class="title rv">已收录品牌</h2>
-    <p class="lead rv">每一个品牌都经过人工品控审核，只展示真正坚持原创的独立设计。</p>
-
-    <div class="filters rv" id="filters">
-      <button class="on" data-f="all">全部</button>
-      <button data-f="服装">服装</button>
-      <button data-f="首饰">首饰</button>
-      <button data-f="配饰">配饰</button>
-      <button data-f="包袋">包袋</button>
-      <button data-f="生活方式">生活方式</button>
-    </div>
-
-    <div class="grid" id="grid">
-      <article class="card rv" data-cat="服装" data-brand="A">
-        <div class="cover g1"><b>AX</b><span class="more">查看详情</span></div>
-        <div class="body">
-          <h3>AXIS STUDIO</h3>
-          <p>机能剪裁与极简廓形，主打都市通勤与街头之间的平衡。</p>
-          <div class="tags"><span class="tag">服装</span><span class="tag">国内</span><span class="tag">2021 创立</span></div>
-          <div class="links"><a href="#" onclick="return false">淘宝</a><a href="#" onclick="return false">抖音</a><a href="#" onclick="return false">官网</a></div>
-        </div>
-      </article>
-
-      <article class="card rv" data-cat="首饰" data-brand="B">
-        <div class="cover g2"><b>SL</b><span class="more">查看详情</span></div>
-        <div class="body">
-          <h3>SILVER LAB</h3>
-          <p>手工银饰工作室，每一件都由匠人单独打磨，不做批量复刻。</p>
-          <div class="tags"><span class="tag">首饰</span><span class="tag">国内</span><span class="tag">手工</span></div>
-          <div class="links"><a href="#" onclick="return false">淘宝</a><a href="#" onclick="return false">小红书</a></div>
-        </div>
-      </article>
-
-      <article class="card rv" data-cat="包袋" data-brand="C">
-        <div class="cover g3"><b>KN</b><span class="more">查看详情</span></div>
-        <div class="body">
-          <h3>KANON</h3>
-          <p>日式复古帆布包，重视面料克重与走线细节，越用越有味道。</p>
-          <div class="tags"><span class="tag">包袋</span><span class="tag">海外</span><span class="tag">帆布</span></div>
-          <div class="links"><a href="#" onclick="return false">京东</a><a href="#" onclick="return false">官网</a></div>
-        </div>
-      </article>
-
-      <article class="card rv" data-cat="配饰" data-brand="D">
-        <div class="cover g4"><b>MR</b><span class="more">查看详情</span></div>
-        <div class="body">
-          <h3>MIRROR ROOM</h3>
-          <p>帽饰与围巾为主，用色大胆，擅长把艺术图案落到日常单品上。</p>
-          <div class="tags"><span class="tag">配饰</span><span class="tag">国内</span></div>
-          <div class="links"><a href="#" onclick="return false">淘宝</a><a href="#" onclick="return false">抖音</a></div>
-        </div>
-      </article>
-
-      <article class="card rv" data-cat="服装" data-brand="E">
-        <div class="cover g5"><b>NG</b><span class="more">查看详情</span></div>
-        <div class="body">
-          <h3>NORTH GRAIN</h3>
-          <p>以天然面料为核心，主打可长期穿着的基础款与解构细节。</p>
-          <div class="tags"><span class="tag">服装</span><span class="tag">国内</span><span class="tag">天然面料</span></div>
-          <div class="links"><a href="#" onclick="return false">淘宝</a><a href="#" onclick="return false">小红书</a><a href="#" onclick="return false">官网</a></div>
-        </div>
-      </article>
-
-      <article class="card rv" data-cat="生活方式" data-brand="F">
-        <div class="cover g6"><b>OS</b><span class="more">查看详情</span></div>
-        <div class="body">
-          <h3>OFF SEASON</h3>
-          <p>香薰与家居小物，把季节感做成可以带走的气味与器物。</p>
-          <div class="tags"><span class="tag">生活方式</span><span class="tag">国内</span></div>
-          <div class="links"><a href="#" onclick="return false">京东</a><a href="#" onclick="return false">抖音</a></div>
-        </div>
-      </article>
-    </div>
+<!-- CURATED / EMPTY -->
+<section id="curated"><div class="ct rv">
+  <div class="sh"><h2>收录品牌</h2><p>目前暂未开放公开展示，入驻审核通过后陆续上线。</p></div>
+  <div class="es">
+    <div class="ic">◇</div>
+    <h3>品牌即将登场</h3>
+    <p>我们正在逐一审核申请中的原创设计品牌，通过品控后将在此展示品牌故事、用料工艺与官方购买渠道。</p>
+    <a href="#apply" class="bn bp">我是品牌方 →</a>
   </div>
-</section>
+</div></section>
 
-
-<!-- ===== 社区 ===== -->
-<section id="community">
-  <div class="wrap">
-    <div class="eyebrow rv">Community</div>
-    <h2 class="title rv">TUY 社区</h2>
-    <p class="lead rv">商家分享设计幕后与新品动态，顾客分享穿搭灵感与真实评测。所有内容经 TUY 审核，只为连接真正的好设计。</p>
-
-    <div class="community-tabs rv" id="communityTabs">
-      <button class="tab-btn on" data-tab="merchant">商家动态</button>
-      <button class="tab-btn" data-tab="customer">穿搭灵感</button>
-      <button class="tab-btn" data-tab="featured">TUY 精选</button>
-      <button class="tab-btn post-btn" data-tab="post">+ 发帖</button>
+<!-- APPLY -->
+<section id="apply" style="background:var(--sf)"><div class="ct rv">
+  <div class="sh"><h2>申请入驻</h2><p>服装 · 鞋履 · 包袋 · 首饰 · 配饰 · 生活方式</p></div>
+  <form class="fg" id="af" novalidate>
+    <div class="fd"><label class="fl">品牌名称 *</label><input name="name" required autocomplete="organization"></div>
+    <div class="fd"><label class="fl">品类 *</label>
+      <select name="cat" required><option value="">请选择</option><option>服装</option><option>鞋履</option><option>包袋</option><option>首饰</option><option>配饰</option><option>生活方式</option></select>
     </div>
+    <div class="fd"><label class="fl">联系人 *</label><input name="contact" required autocomplete="name"></div>
+    <div class="fd"><label class="fl">微信或邮箱 *</label><input name="way" required autocomplete="email"></div>
+    <div class="fd"><label class="fl">店铺链接</label><input name="url" placeholder="淘宝 / 小红书 / 官网 / 抖音等"></div>
+    <div class="fd"><label class="fl">品牌故事与用料</label><textarea name="story" rows="3" placeholder="讲讲你的设计理念、常用面料或工艺"></textarea></div>
+    <p class="fh">提交后我们会人工审核，通过后才会上线展示。所有品牌图与文案请确保为自有或已获授权。</p>
+    <button type="submit" class="bn bp" style="justify-self:start">提交申请</button>
+  </form>
+</div></section>
 
-    <!-- 发帖面板 -->
-    <div class="post-panel" id="postPanel" style="display:none">
-      <div class="post-panel-header">
-        <h3>发布新内容</h3>
-        <button class="close-panel" id="closePanel">×</button>
-      </div>
-      <form id="postForm" class="community-form">
-        <div class="fg">
-          <label>发帖类型 <i>*</i></label>
-          <div class="chips">
-            <label><input type="radio" name="postType" value="merchant" checked> 商家动态</label>
-            <label><input type="radio" name="postType" value="customer"> 穿搭灵感</label>
-          </div>
-        </div>
-        <div class="fg">
-          <label>内容标题 <i>*</i></label>
-          <input type="text" placeholder="给帖子起个标题" required>
-        </div>
-        <div class="fg">
-          <label>正文内容 <i>*</i></label>
-          <textarea placeholder="分享你的想法、设计故事或穿搭心得..." required></textarea>
-        </div>
-        <div class="fg">
-          <label>关联品牌</label>
-          <select>
-            <option value="">请选择关联品牌（选填）</option>
-            <option>AXIS STUDIO</option>
-            <option>SILVER LAB</option>
-            <option>KANON</option>
-            <option>MIRROR ROOM</option>
-            <option>NORTH GRAIN</option>
-            <option>OFF SEASON</option>
-          </select>
-        </div>
-        <div class="fg">
-          <label>图片链接</label>
-          <input type="url" placeholder="https://...（可填多个，用逗号分隔）（选填）">
-        </div>
-        <button type="submit" class="submit">发布</button>
-        <p class="hint">发布后将在对应分区展示，商家动态需审核通过后显示</p>
-      </form>
-    </div>
-
-    <!-- 内容流 -->
-    <div class="community-content" id="communityContent">
-      <div class="feed" id="merchantFeed"></div>
-      <div class="feed" id="customerFeed" style="display:none"></div>
-      <div class="feed" id="featuredFeed" style="display:none"></div>
-    </div>
+<!-- ABOUT -->
+<section id="about"><div class="ct rv">
+  <div class="sh"><h2>关于 TUY</h2></div>
+  <div class="av">
+    <p>TUY 是一个为小众原创设计品牌搭建的展示与导流平台。<strong>不卖货、不抽佣</strong>，只做三件事：</p>
+    <p style="margin-top:12px">① <strong>甄选品控</strong> — 人工审核每一家申请品牌<br>② <strong>讲好故事</strong> — 呈现品牌理念、用料与工艺<br>③ <strong>导流回店</strong> — 把用户带回品牌的淘宝、官网、抖音</p>
+    <p style="margin-top:12px">社区功能（穿搭分享、评论）将在后续版本上线，敬请期待。</p>
   </div>
-</section>
+</div></section>
 
-<!-- 关于 -->
-<section id="about">
-  <div class="wrap about">
-    <div class="rv">
-      <div class="eyebrow">About</div>
-      <h2 class="title">我们只做一件事：<br>让原创被看见</h2>
-      <p style="margin-top:22px">TUY 不卖货、不抽成、不做自营。我们只做两件事——<b style="color:var(--txt)">替用户把关</b>，<b style="color:var(--txt)">替品牌发声</b>。</p>
-      <p>每一个入驻品牌都会经过人工审核：是否有原创设计能力、是否有稳定产出、是否存在抄袭或仿款记录。通过之后，我们只展示品牌自己的官方店铺链接，交易完全在品牌方完成。</p>
-      <p>同时，我们鼓励品牌公开自己的品牌故事、用料与工艺，让用户买得明白，也让认真做东西的人被认真对待。</p>
-    </div>
-    <div class="stats rv">
-      <div><b>100%</b><span>人工品控审核</span></div>
-      <div><b>0</b><span>平台抽成 / 自营销售</span></div>
-      <div><b>3</b><span>核心品类：服装 · 首饰 · 配饰</span></div>
-      <div><b>7天</b><span>入驻审核平均反馈</span></div>
-    </div>
-  </div>
-</section>
+</main>
 
-<!-- 入驻 -->
-<section id="apply">
-  <div class="wrap">
-    <div class="eyebrow rv">Apply</div>
-    <h2 class="title rv">品牌入驻申请</h2>
-    <p class="lead rv">信息越完整，审核越快。请尽量填写真实的店铺链接与品牌资料。</p>
+<footer><p>© 2026 TUY</p></footer>
 
-    <form class="form rv" id="applyForm">
-      <div class="two">
-        <div class="fg"><label>品牌名称 <i>*</i></label><input type="text" placeholder="如 AXIS STUDIO" required></div>
-        <div class="fg"><label>主理人 / 联系人 <i>*</i></label><input type="text" placeholder="你的姓名" required></div>
-      </div>
-      <div class="two">
-        <div class="fg"><label>联系邮箱 <i>*</i></label><input type="email" placeholder="example@mail.com" required></div>
-        <div class="fg"><label>手机号 / 微信</label><input type="text" placeholder="便于快速沟通（选填）"></div>
-      </div>
-
-      <div class="fg"><label>主营品类 <i>*</i></label>
-        <div class="chips">
-          <label><input type="checkbox" name="cat" value="服装">服装</label>
-          <label><input type="checkbox" name="cat" value="首饰">首饰</label>
-          <label><input type="checkbox" name="cat" value="配饰">配饰</label>
-          <label><input type="checkbox" name="cat" value="包袋">包袋</label>
-          <label><input type="checkbox" name="cat" value="鞋履">鞋履</label>
-          <label><input type="checkbox" name="cat" value="生活方式">生活方式</label>
-        </div>
-      </div>
-
-      <div class="subhead">店铺与作品链接</div>
-      <div class="fg"><label>淘宝店铺链接 <i>*</i></label><input type="url" placeholder="https://shop.taobao.com/..." required></div>
-      <div class="two">
-        <div class="fg"><label>京东店铺链接</label><input type="url" placeholder="https://...（选填）"></div>
-        <div class="fg"><label>抖音店铺 / 账号</label><input type="url" placeholder="https://...（选填）"></div>
-      </div>
-      <div class="two">
-        <div class="fg"><label>小红书账号</label><input type="url" placeholder="https://...（选填）"></div>
-        <div class="fg"><label>品牌官网 / 其他店铺</label><input type="url" placeholder="https://...（选填）"></div>
-      </div>
-      <div class="fg"><label>作品集链接</label><input type="url" placeholder="Behance / Instagram / 云盘相册等（选填）"></div>
-
-      <div class="subhead">品牌资料</div>
-      <div class="fg"><label>品牌故事 <i>*</i></label><textarea placeholder="品牌怎么来的、想表达什么、设计灵感来源……（200 字以上更容易通过）" required></textarea></div>
-      <div class="fg"><label>用料与工艺</label><textarea placeholder="主要面料/材质、产地、是否手工、生产方式等"></textarea></div>
-      <div class="fg"><label>原创说明</label><textarea placeholder="是否有设计稿、外观专利、版权登记等可佐证原创的材料？"></textarea></div>
-      <div class="fg"><label>补充说明</label><textarea placeholder="其他希望我们了解的信息"></textarea></div>
-
-      <button type="submit" class="submit">提交入驻申请</button>
-      <p class="hint">提交后 7 个工作日内会通过邮箱回复审核结果</p>
-    </form>
-
-    <div class="ok" id="okBox">
-      <i>✓</i>
-      <h3>申请已收到</h3>
-      <p>我们会尽快审核你的品牌资料，并通过邮箱与你联系。</p>
-    </div>
-  </div>
-</section>
-
-<!-- 底部 -->
-<footer id="contact">
-  <div class="wrap">
-    <div class="fgrid">
-      <div>
-        <h5>TUY</h5>
-        <p style="color:var(--sub);font-size:14px;max-width:280px">小众原创设计品牌聚集地<br>只做导流与品控，不做销售。</p>
-      </div>
-      <div><h5>导航</h5><ul><li><a href="#products">精选产品</a></li><li><a href="#community">社区</a></li><li><a href="#brands">已收录品牌</a></li><li><a href="#about">关于 TUY</a></li><li><a href="#apply">品牌入驻</a></li></ul></div>
-      <div><h5>关注我们</h5><ul><li><a href="#" onclick="return false">小红书</a></li><li><a href="#" onclick="return false">抖音</a></li><li><a href="#" onclick="return false">微博</a></li></ul></div>
-      <div><h5>合作咨询</h5><ul><li>邮箱：<span id="mail" onclick="this.innerText='zys20071129@qq.com';this.removeAttribute('onclick')">点击显示</span></li><li>品牌入驻 / 媒体合作</li></ul></div>
-    </div>
-    <div class="copy"><span>© 2026 TUY. All rights reserved.</span><span>本站不销售任何商品，所有交易由品牌方自行完成。</span></div>
-  </div>
-</footer>
-
-<!-- 产品详情弹窗 -->
-<div class="modal" id="pmodal"><div class="mbox">
-  <button class="close" id="pClose">×</button>
-  <div class="m-sub" id="pmBrand"></div><h3 id="pmName"></h3><div class="mprice" id="pmPrice"></div>
-  <h4>产品介绍</h4><p id="pmDesc"></p>
-  <h4>材质与工艺</h4><p id="pmMat"></p>
-  <h4>购买渠道</h4><div class="buy" id="pmBuy"></div>
-  <p class="note">TUY 不参与交易，点击后将跳转至品牌官方店铺</p>
-  <div style="text-align:center;margin-top:14px"><a class="btn ghost" id="pmBrandLink" href="#brands" style="font-size:13px;padding:9px 20px">查看该品牌</a></div>
+<!-- MODAL -->
+<div class="ov" id="fm"><div class="md" id="fmb">
+  <button class="mx" data-x aria-label="关闭">✕</button>
+  <h3>申请已提交</h3>
+  <div class="st">我们会在 3–7 个工作日内审核，结果将通过你留下的联系方式告知。<br><br>当前版本为前端演示，数据尚未接入服务器，后续连接后台后将自动入库。</div>
 </div></div>
 
-<!-- 品牌详情弹窗 -->
-<div class="modal" id="modal">
-  <div class="mbox">
-    <button class="close" id="mClose">×</button>
-    <h3 id="mName"></h3>
-    <div class="m-sub" id="mSub"></div>
-    <h4>品牌故事</h4><p id="mStory"></p>
-    <h4>用料与工艺</h4><p id="mMat"></p>
-    <h4>官方店铺</h4><div class="links" id="mLinks"></div>
-  </div>
-</div>
+<script>
+'use strict';
+const Q=s=>document.querySelector(s),A=s=>document.querySelectorAll(s);
 
+/* ── NAV ── */
+const br2=Q("#br2"),nl2=Q("#nl2");
+br2.onclick=()=>{const o=nl2.classList.toggle("o");br2.setAttribute("aria-expanded",o);};
+nl2.onclick=e=>{if(e.target.tagName==="A")nl2.classList.remove("o");};
 
-<!-- 社区帖子详情弹窗 -->
-<div class="modal" id="postModal">
-  <div class="mbox mbox--large">
-    <button class="close" id="postModalClose">×</button>
-    <div class="post-header" id="pmPostHeader"></div>
-    <div class="post-body" id="pmPostBody"></div>
-    <div class="post-actions" id="pmPostActions"></div>
-    <div class="post-comments" id="pmPostComments"></div>
-  </div>
-</div>
+/* ── SCROLL ── */
+let tk=false;
+window.onscroll=()=>{if(!tk){requestAnimationFrame(()=>{
+  Q("#nav").classList.toggle("s",window.scrollY>40);
+  A(".rv").forEach(el=>{if(el.getBoundingClientRect().top<innerHeight-60)el.classList.add("v");});
+  tk=false;});tk=true;}};
 
-<button id="top" aria-label="回到顶部">↑</button>
+/* ── MODAL ── */
+function om(id){Q("#"+id).classList.add("o");document.body.style.overflow="hidden";}
+function cm(){A(".ov.o").forEach(el=>el.classList.remove("o"));document.body.style.overflow="";}
+document.onclick=e=>{if(e.target.dataset.x||e.target.classList.contains("ov"))cm();};
+document.onkeydown=e=>{if(e.key==="Escape")cm();};
 
-<script>/* 入场 */
-addEventListener('load',()=>document.body.classList.add('loaded'));
-addEventListener('DOMContentLoaded',()=>document.body.classList.add('loaded'));
-
-/* 滚动渐显 */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%6*60)+'ms';io.observe(el)});
-
-/* 导航收缩 + 回到顶部 + 高亮 */
-const hd=document.getElementById('hd'),topBtn=document.getElementById('top');
-const secs=[...document.querySelectorAll('section[id]')];
-addEventListener('scroll',()=>{
-  const y=scrollY;
-  hd.classList.toggle('shrink',y>30);
-  topBtn.classList.toggle('on',y>400);
-  let cur='';secs.forEach(s=>{if(y>=s.offsetTop-120)cur=s.id});
-  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
-},{passive:true});
-topBtn.onclick=()=>scrollTo({top:0,behavior:'smooth'});
-
-/* 汉堡菜单 */
-const burger=document.getElementById('burger'),menu=document.getElementById('menu');
-burger.onclick=()=>{burger.classList.toggle('open');menu.classList.toggle('open')};
-menu.querySelectorAll('a').forEach(a=>a.onclick=()=>{burger.classList.remove('open');menu.classList.remove('open')});
-
-/* ===== 产品数据 ===== */
-const P=[
- {id:1,n:'解构工装夹克',b:'AXIS STUDIO',bk:'A',c:'服装',p:680,g:'g1',t:'新品',d:'落肩廓形+可拆卸袖口，一件衣服两种穿法。前襟双口袋做了斜切处理，通勤和街头都能穿。',m:'320g高密度斜纹布，YKK定制拉链，成衣预缩水处理，建议冷水手洗。',l:[['淘宝','#'],['抖音','#']]},
- {id:2,n:'不对称立领衬衫',b:'AXIS STUDIO',bk:'A',c:'服装',p:420,g:'g3',t:'',d:'领口做了7度倾斜，视觉上拉长颈部线条。下摆一侧收进一侧外放，是品牌最畅销的基础款。',m:'精梳棉混纺，抗皱处理，机洗30度以下。',l:[['淘宝','#'],['官网','#']]},
- {id:3,n:'手工锤纹银戒',b:'SILVER LAB',bk:'B',c:'首饰',p:280,g:'g2',t:'手工',d:'每一枚锤纹都由匠人手工敲制，因此没有两枚完全相同。宽度4mm，男女皆可佩戴。',m:'925纯银，表面做旧氧化处理，附检测证书，不电镀。',l:[['淘宝','#'],['小红书','#']]},
- {id:4,n:'几何线条项链',b:'SILVER LAB',bk:'B',c:'首饰',p:340,g:'g5',t:'',d:'以建筑线稿为灵感的极简项链，链长可调节40-45cm，日常叠戴不显杂乱。',m:'925纯银，防氧化电镀层（唯一使用电镀的系列），附保养布。',l:[['淘宝','#']]},
- {id:5,n:'重磅帆布托特包',b:'KANON',bk:'C',c:'包袋',p:520,g:'g3',t:'经典',d:'16oz重磅帆布，可装15寸笔记本。底部加固，肩带可调节，越用越软越有个人痕迹。',m:'16oz帆布+YKK拉链，内衬回收棉布，每只包独立编号。',l:[['京东','#'],['官网','#']]},
- {id:6,n:'复古邮差包',b:'KANON',bk:'C',c:'包袋',p:760,g:'g6',t:'',d:'翻盖磁扣设计，内部三个分隔层。包型挺括不塌，适合通勤与短途出行。',m:'植鞣革拼接帆布，手工缝线，随使用时间产生自然包浆。',l:[['京东','#']]},
- {id:7,n:'艺术印花渔夫帽',b:'MIRROR ROOM',bk:'D',c:'配饰',p:180,g:'g4',t:'联名',d:'与独立插画师联名的第三个系列，图案为原创手绘，每款限量300顶。',m:'棉麻混纺，数码直喷印花，色牢度4级以上，可机洗。',l:[['淘宝','#'],['抖音','#']]},
- {id:8,n:'羊毛格纹围巾',b:'MIRROR ROOM',bk:'D',c:'配饰',p:320,g:'g2',t:'',d:'200x70cm大尺寸，可围可披。格纹配色取自九十年代老照片，低调但有辨识度。',m:'70%羊毛+30%羊绒，日本织造工艺，边缘手工流苏。',l:[['淘宝','#']]},
- {id:9,n:'有机棉基础卫衣',b:'NORTH GRAIN',bk:'E',c:'服装',p:360,g:'g5',t:'长销',d:'品牌一年只出两个系列，这件是常年在售的基础款，版型已经改良到第四版。',m:'GOTS认证有机棉，380g毛圈布，低污染活性染料。',l:[['淘宝','#'],['小红书','#'],['官网','#']]},
- {id:10,n:'亚麻解构长裤',b:'NORTH GRAIN',bk:'E',c:'服装',p:440,g:'g1',t:'',d:'侧缝外移+膝部立体剪裁，走路时不绷腿。腰部松紧抽绳，通勤与休闲都能穿。',m:'法国亚麻混纺，预缩水处理，建议干洗或冷水手洗。',l:[['淘宝','#'],['官网','#']]},
- {id:11,n:'厚底复古德训鞋',b:'OFF SEASON',bk:'F',c:'鞋履',p:580,g:'g6',t:'新品',d:'鞋型参考八十年代训练鞋，鞋底加厚3cm，上脚显高但不笨重。',m:'头层牛皮鞋面+反绒皮拼接，橡胶大底，鞋垫可拆洗。',l:[['京东','#'],['抖音','#']]},
- {id:12,n:'季节香薰蜡烛',b:'OFF SEASON',bk:'F',c:'生活方式',p:168,g:'g4',t:'',d:'秋冬限定香型，前调雪松、中调烟草、尾调琥珀。燃烧时间约45小时。',m:'大豆蜡+天然精油调配，无石蜡无邻苯，玻璃杯可复用。',l:[['京东','#'],['抖音','#']]}
-];
-const BRANDS={A:'AXIS STUDIO',B:'SILVER LAB',C:'KANON',D:'MIRROR ROOM',E:'NORTH GRAIN',F:'OFF SEASON'};
-let fCat='all',fKey='',fSort='rec';
-const pgrid=document.getElementById('pgrid'),cnt=document.getElementById('count');
-function render(){
-  let list=P.filter(x=>(fCat==='all'||x.c===fCat)&&(x.n+x.b+x.c).toLowerCase().includes(fKey));
-  if(fSort==='low')list=[...list].sort((a,b)=>a.p-b.p);
-  else if(fSort==='high')list=[...list].sort((a,b)=>b.p-a.p);
-  else if(fSort==='new')list=[...list].sort((a,b)=>b.id-a.id);
-  cnt.textContent=list.length?`共 ${list.length} 件产品`:'没有找到匹配的产品';
-  pgrid.innerHTML=list.length?list.map(x=>`
-   <article class="pcard" data-id="${x.id}">
-    <div class="pcov ${x.g}"><b>${x.b.split(' ')[0].slice(0,2).toUpperCase()}</b>${x.t?`<span class="badge ${x.t==='新品'?'new':''}">${x.t}</span>`:''}</div>
-    <div class="pbody"><div class="brand">${x.b}</div><h3>${x.n}</h3>
-     <div class="prow"><span class="price">¥${x.p}<small> 起</small></span><span class="ptag">${x.c}</span></div></div>
-   </article>`).join(''):'<div class="empty">换个关键词试试，或者浏览全部品类</div>';
-  pgrid.querySelectorAll('.pcard').forEach(c=>c.onclick=()=>openP(+c.dataset.id));
-}
-render();
-document.getElementById('q').addEventListener('input',e=>{fKey=e.target.value.trim().toLowerCase();render()});
-document.getElementById('sort').addEventListener('change',e=>{fSort=e.target.value;render()});
-document.getElementById('pfilters').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
-  document.querySelectorAll('#pfilters button').forEach(x=>x.classList.remove('on'));b.classList.add('on');fCat=b.dataset.f;render()});
-
-/* 产品弹窗 */
-const pm=document.getElementById('pmodal');
-function openP(id){const x=P.find(v=>v.id===id);if(!x)return;
-  document.getElementById('pmBrand').textContent=x.b+' · '+x.c;
-  document.getElementById('pmName').textContent=x.n;
-  document.getElementById('pmPrice').textContent='¥'+x.p;
-  document.getElementById('pmDesc').textContent=x.d;
-  document.getElementById('pmMat').textContent=x.m;
-  document.getElementById('pmBuy').innerHTML=x.l.map((k,i)=>`<a class="${i===0?'pri':''}" href="${k[1]}" target="_blank" rel="noopener">${k[0]} 购买</a>`).join('');
-  document.getElementById('pmBrandLink').onclick=()=>{closeP();setTimeout(()=>{const el=document.querySelector(`.card[data-brand="${x.bk}"]`);if(el)el.scrollIntoView({behavior:'smooth',block:'center'})},200)};
-  pm.classList.add('on');document.body.style.overflow='hidden';}
-const closeP=()=>{pm.classList.remove('on');document.body.style.overflow=''};
-document.getElementById('pClose').onclick=closeP;
-pm.onclick=e=>{if(e.target===pm)closeP()};
-
-/* 品牌筛选 */
-document.getElementById('filters').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
-  document.querySelectorAll('#filters button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
-  const f=b.dataset.f;document.querySelectorAll('.card').forEach(c=>{const show=(f==='all'||c.dataset.cat===f);
-   c.style.display=show?'':'none';if(show){c.classList.remove('in');requestAnimationFrame(()=>requestAnimationFrame(()=>c.classList.add('in')))}});});
-
-/* 品牌详情 */
-const DATA={
- A:{n:'AXIS STUDIO',s:'服装 · 国内 · 2021 创立',st:'由两位建筑背景的设计师创立，把结构思维带进服装。品牌名取自坐标轴，意在探索身体与空间之间的关系。所有版型均为自研，不做市面通货改款。',m:'主面料为高克重斜纹布与再生尼龙，五金件采用定制开模，成衣由合作十年以上的老厂小批量制作，单款首单不超过 200 件。',l:['淘宝','抖音','官网']},
- B:{n:'SILVER LAB',s:'首饰 · 国内 · 手工',st:'一间只有三个人的银饰工作室。每一件作品从起版到抛光都由同一位匠人完成，因此同一款也会有细微差别，这正是手工的意义。',m:'925 纯银为主，部分款式做旧氧化处理；不使用电镀仿银材质，所有原料均可提供检测证明。',l:['淘宝','小红书']},
- C:{n:'KANON',s:'包袋 · 海外',st:'来自大阪的小众包袋品牌，主张"一只包用十年"。设计语言克制，靠结构与面料本身说话。',m:'16oz 以上重磅帆布，YKK 拉链，加固缝线；内衬使用回收棉布，每只包都有独立编号。',l:['京东','官网']},
- D:{n:'MIRROR ROOM',s:'配饰 · 国内',st:'以帽饰与围巾为核心的配饰品牌，常与独立插画师联名，把平面艺术转译成可穿戴的单品。',m:'羊毛混纺与棉麻为主，印花采用数码直喷，色牢度经过第三方检测。',l:['淘宝','抖音']},
- E:{n:'NORTH GRAIN',s:'服装 · 国内 · 天然面料',st:'坚持"少而精"的路线，一年只出两个系列，基础款会长期在售并持续改良版型。',m:'以有机棉、亚麻、羊毛为主，染料使用低污染工艺，成衣经过预缩水处理。',l:['淘宝','小红书','官网']},
- F:{n:'OFF SEASON',s:'生活方式 · 国内',st:'把季节感做成可带走的气味与器物，从香薰蜡烛到陶瓷杯具，都在探索"日常的仪式感"。',m:'大豆蜡与天然精油调配，陶瓷由景德镇合作窑口小批量烧制，釉色每批略有差异。',l:['京东','抖音']}
-};
-const modal=document.getElementById('modal');
-document.querySelectorAll('.card').forEach(c=>c.onclick=()=>{const d=DATA[c.dataset.brand];if(!d)return;
-  document.getElementById('mName').textContent=d.n;document.getElementById('mSub').textContent=d.s;
-  document.getElementById('mStory').textContent=d.st;document.getElementById('mMat').textContent=d.m;
-  document.getElementById('mLinks').innerHTML=d.l.map(x=>'<a href="#" onclick="return false">'+x+'</a>').join('');
-  modal.classList.add('on');document.body.style.overflow='hidden';});
-const closeM=()=>{modal.classList.remove('on');document.body.style.overflow=''};
-document.getElementById('mClose').onclick=closeM;
-modal.onclick=e=>{if(e.target===modal)closeM()};
-addEventListener('keydown',e=>{if(e.key==='Escape'){closeAllModals()}});
-
-/* 表单 */
-document.getElementById('applyForm').addEventListener('submit',e=>{
+/* ── FORM ── */
+Q("#af").onsubmit=e=>{
   e.preventDefault();
-  e.target.style.display='none';
-  document.getElementById('okBox').classList.add('on');
-  document.getElementById('okBox').scrollIntoView({behavior:'smooth',block:'center'});
-});
-
-
-/* ===== 社区功能 ===== */
-const COMMUNITY_POSTS = {
-  merchant: [
-    {
-      id: 1, type: 'merchant', author: 'AXIS STUDIO', avatar: 'AX',
-      badge: 'merchant', title: '2024秋冬系列设计幕后',
-      text: '这个系列花了我们整整4个月时间。从面料 sourcing 到版型打磨，每一个环节都反复调整。最满意的是这件解构工装夹克——可拆卸袖口的设计灵感来自军装制服，但我們把它做得更日常、更好穿。',
-      images: ['g1', 'g3', 'g1'], imgCount: 3,
-      likes: 128, comments: 23, time: '2小时前', brand: 'A'
-    },
-    {
-      id: 2, type: 'merchant', author: 'SILVER LAB', avatar: 'SL',
-      badge: 'merchant', title: '每一枚戒指都有独一无二的纹理',
-      text: '很多顾客问锤纹银戒的纹理是不是模具压出来的。答案是否定的——每一枚都是匠人用特制锤子手工敲制，所以没有两枚完全相同的戒指。这也是手工银饰的魅力所在。',
-      images: ['g2'], imgCount: 1,
-      likes: 96, comments: 15, time: '5小时前', brand: 'B'
-    },
-    {
-      id: 3, type: 'merchant', author: 'KANON', avatar: 'KN',
-      badge: 'merchant', title: '一只包用十年——我们的材料哲学',
-      text: 'KANON 的所有包袋都使用16oz以上重磅帆布，搭配YKK拉链和加固缝线。我们不做快消，做的是可以陪伴你十年的物件。随着使用时间增长，帆布会越发柔软有味道。',
-      images: ['g3', 'g6'], imgCount: 2,
-      likes: 214, comments: 31, time: '1天前', brand: 'C'
-    },
-    {
-      id: 4, type: 'merchant', author: 'MIRROR ROOM', avatar: 'MR',
-      badge: 'merchant', title: '与插画师SUWI的第三次联名发布',
-      text: '这次的图案全部来自SUWI的手绘原作，我们把它转译到渔夫帽和围巾上。每款限量300件，售完不补。希望戴出去的时候，你能感受到那份手绘的温度。',
-      images: ['g4', 'g2', 'g4'], imgCount: 3,
-      likes: 187, comments: 42, time: '2天前', brand: 'D'
-    }
-  ],
-  customer: [
-    {
-      id: 101, type: 'customer', author: '林小川', avatar: 'LC',
-      badge: 'customer', title: 'AXIS夹克 + KANON托特包的搭配',
-      text: '最近最爱的一套look！工装夹克的廓形配上帆布托特包，通勤和周末都能穿。夹克是AXIS STUDIO的解构款，托特包是KANON的经典款，两件都是TUY上发现的宝藏品牌。',
-      images: ['g1', 'g3'], imgCount: 2,
-      likes: 256, comments: 38, time: '3小时前', brand: ''
-    },
-    {
-      id: 102, type: 'customer', author: '四木', avatar: 'SM',
-      badge: 'customer', title: 'SILVER LAB银戒实戴一个月感受',
-      text: '入手了锤纹银戒已经一个月了，日常佩戴没有过敏反应，氧化处理后反而更有味道。唯一需要注意的是洗澡时尽量摘下，虽然官方说可以做旧处理但长期泡水还是会加深氧化。整体非常满意，准备再入一条项链。',
-      images: ['g2'], imgCount: 1,
-      likes: 183, comments: 27, time: '8小时前', brand: 'B'
-    },
-    {
-      id: 103, type: 'customer', author: '阿橙', avatar: 'AC',
-      badge: 'customer', title: '秋冬围巾搭配分享',
-      text: 'MIRROR ROOM的羊毛格纹围巾真的绝了！70%羊毛+30%羊绒的材质手感超级好，200x70cm的尺寸可以围可以披。格纹配色很高级，不是那种张扬的图案但很有辨识度。',
-      images: ['g2', 'g4'], imgCount: 2,
-      likes: 142, comments: 19, time: '1天前', brand: 'D'
-    },
-    {
-      id: 104, type: 'customer', author: '白岩', avatar: 'BY',
-      badge: 'customer', title: 'OFF SEASON香薰蜡烛测评',
-      text: '秋冬限定香型真的很好闻！前调雪松很清新，中调烟草带来温暖感，尾调琥珀很持久。蜡烛燃烧时间确实有45小时左右，大豆蜡+天然精油的配方燃烧时没有黑烟。玻璃杯用完还可以当花瓶。',
-      images: ['g4', 'g6'], imgCount: 2,
-      likes: 98, comments: 14, time: '3天前', brand: 'F'
-    }
-  ],
-  featured: [
-    {
-      id: 201, type: 'featured', author: 'TUY 编辑', avatar: 'TY',
-      badge: 'featured', title: '本周精选：秋冬必备单品合集',
-      text: '这个秋冬我们为大家精选了6件最值得入手的单品——从解构工装夹克到羊毛格纹围巾，从手工银戒到重磅帆布包。每一件都经过编辑团队实地体验，品质经得起考验。点击下方卡片查看詳情。',
-      images: ['g1', 'g2', 'g3', 'g4'], imgCount: 4,
-      likes: 523, comments: 67, time: '1天前', brand: ''
-    },
-    {
-      id: 202, type: 'featured', author: 'TUY 编辑', avatar: 'TY',
-      badge: 'featured', title: '新锐品牌推荐：NORTH GRAIN的天然面料哲学',
-      text: '如果一个品牌一年只出两个系列，那每一件单品都必须是精品。NORTH GRAIN 坚持使用GOTS认证有机棉、法国亚麻和澳洲羊毛，所有染料通过低污染工艺处理。少而精，才是对地球最好的方式。',
-      images: ['g5', 'g1'], imgCount: 2,
-      likes: 387, comments: 45, time: '3天前', brand: 'E'
-    }
-  ]
+  const ms=[...e.target.querySelectorAll("[required]")].filter(i=>!i.value.trim());
+  if(ms.length){ms.forEach(i=>i.style.borderColor="#fb7185");return;}
+  console.log(Object.fromEntries(new FormData(e.target)));
+  om("fm");e.target.reset();
 };
+Q("#af").oninput=e=>{e.target.style.borderColor="";}
 
-// 渲染帖子卡片HTML
-function createPostCard(post) {
-  const badgeClass = post.badge === 'merchant' ? 'merchant-badge' : post.badge === 'featured' ? 'featured-badge' : 'customer-badge';
-  const badgeText = post.badge === 'merchant' ? '认证商家' : post.badge === 'featured' ? 'TUY推荐' : '顾客分享';
-  const avatarClass = post.badge === 'merchant' ? 'merchant' : post.badge === 'featured' ? 'featured' : 'customer';
-  
-  // 生成图片网格
-  let imagesHtml = '';
-  if (post.imgCount > 0) {
-    const placeholders = post.images || [];
-    imagesHtml = '<div class="post-images img-' + Math.min(post.imgCount, 5) + '">';
-    for (let i = 0; i < post.imgCount; i++) {
-      const bg = placeholders[i] || 'g5';
-      imagesHtml += '<div class="post-img-placeholder ' + bg + '" style="background:linear-gradient(135deg,#' + 
-        (post.badge === 'merchant' ? '1c2b23' : post.badge === 'featured' ? '2b2418' : '182430') + ',#' +
-        (post.badge === 'merchant' ? '0d1a12' : post.badge === 'featured' ? '161009' : '0b1219') + ')"></div>';
-    }
-    imagesHtml += '</div>';
-  }
-  
-  // 品牌跳转
-  let brandLink = '';
-  if (post.brand) {
-    brandLink = '<button class="post-brand-link" onclick="event.stopPropagation();viewBrandPost(\'' + post.brand + '\')">查看' + 
-      (post.type === 'merchant' ? '品牌主页' : '相关产品') + ' →</button>';
-  }
-  
-  return '<article class="post-card" data-id="' + post.id + '" data-type="' + post.type + '">
-    <div class="post-header-row">
-      <div class="post-author">
-        <div class="post-avatar ' + avatarClass + '">' + post.avatar + '</div>
-        <div class="post-info">
-          <h4>' + post.author + ' <span class="badge ' + badgeClass + '">' + badgeText + '</span></h4>
-          <div class="post-time">' + post.time + '</div>
-        </div>
-      </div>
-      <span class="post-more" onclick="event.stopPropagation();openPostDetail(' + post.id + ',\'' + post.type + '\')">×</span>
-    </div>
-    <div class="post-title">' + post.title + '</div>
-    <div class="post-text truncate">' + post.text + '</div>
-    ' + imagesHtml + '
-    <div class="post-actions-row">
-      <button class="action-btn like-btn" onclick="event.stopPropagation();toggleLike(this,' + post.id + ',\'' + post.type + '\')"><span class="icon heart">♥</span> <span class="like-count">' + post.likes + '</span></button>
-      <button class="action-btn" onclick="event.stopPropagation();openPostDetail(' + post.id + ',\'' + post.type + '\')"><span class="icon">[评论]</span> ' + post.comments + '</button>
-      <button class="action-btn" onclick="event.stopPropagation();sharePost()"><span class="icon">[外]</span> 分享</button>
-      ' + brandLink + '
-    </div>
-  </article>';
-}
-
-// 渲染各分区
-function renderCommunity() {
-  // 保存当前点赞状态
-  var likedPosts = {};
-  document.querySelectorAll('.action-btn.like-btn.liked').forEach(function(btn) {
-    var postId = btn.getAttribute('onclick').match(/,\s*(\d+)/);
-    if (postId) likedPosts[postId[1]] = true;
-  });
-  
-  document.getElementById('merchantFeed').innerHTML = COMMUNITY_POSTS.merchant.map(p => createPostCard(p)).join('');
-  document.getElementById('customerFeed').innerHTML = COMMUNITY_POSTS.customer.map(p => createPostCard(p)).join('');
-  document.getElementById('featuredFeed').innerHTML = COMMUNITY_POSTS.featured.map(p => createPostCard(p)).join('');
-  
-  // 恢复点赞状态
-  Object.keys(likedPosts).forEach(function(id) {
-    var btn = document.querySelector('.action-btn.like-btn[onclick*="' + id + '"]');
-    if (btn) {
-      btn.classList.add('liked');
-      var post = COMMUNITY_POSTS.merchant.concat(COMMUNITY_POSTS.customer, COMMUNITY_POSTS.featured).find(function(p){return p.id == id});
-      if (post) {
-        var countEl = btn.querySelector('.like-count');
-        if (countEl) countEl.textContent = post.likes;
-      }
-    }
-  });
-}
-
-// Tab切换
-document.getElementById('communityTabs').addEventListener('click', function(e) {
-  const btn = e.target.closest('.tab-btn');
-  if (!btn) return;
-  
-  const tab = btn.dataset.tab;
-  
-  // 更新按钮状态
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  
-  if (tab === 'post') {
-    document.getElementById('postPanel').style.display = 'block';
-    document.getElementById('communityContent').style.display = 'none';
-    return;
-  }
-  
-  document.getElementById('postPanel').style.display = 'none';
-  document.getElementById('communityContent').style.display = 'block';
-  
-  // 切换内容分区
-  document.querySelectorAll('.feed').forEach(f => f.style.display = 'none');
-  document.getElementById(tab + 'Feed').style.display = 'flex';
-});
-
-// 关闭发帖面板
-document.getElementById('closePanel').addEventListener('click', function() {
-  document.getElementById('postPanel').style.display = 'none';
-  document.getElementById('communityContent').style.display = 'flex';
-  // 恢复当前激活的tab
-  const activeTab = document.querySelector('.tab-btn.on');
-  if (activeTab) {
-    const tab = activeTab.dataset.tab;
-    document.querySelectorAll('.feed').forEach(f => f.style.display = 'none');
-    document.getElementById(tab + 'Feed').style.display = 'flex';
-  }
-});
-
-// 发帖表单提交
-document.getElementById('postForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const formData = new FormData(e.target);
-  const postType = formData.get('postType');
-  const title = e.target.querySelector('input[type="text"]').value;
-  const text = e.target.querySelector('textarea').value;
-  
-  // 模拟发帖
-  const newPost = {
-    id: Date.now(),
-    type: postType,
-    author: postType === 'merchant' ? '我的店铺' : '我',
-    avatar: postType === 'merchant' ? 'MY' : 'ME',
-    badge: postType === 'merchant' ? 'merchant' : 'customer',
-    title: title,
-    text: text,
-    images: [],
-    imgCount: 0,
-    likes: 0,
-    comments: 0,
-    time: '刚刚',
-    brand: ''
-  };
-  
-  COMMUNITY_POSTS[postType].unshift(newPost);
-  renderCommunity();
-  
-  // 切换到对应分区
-  document.getElementById('postPanel').style.display = 'none';
-  document.getElementById('communityContent').style.display = 'flex';
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('on'));
-  document.querySelector('[data-tab="' + postType + '"]').classList.add('on');
-  document.getElementById(postType + 'Feed').style.display = 'flex';
-  
-  // 重置表单
-  e.target.reset();
-  
-  // 滚动到新帖子
-  document.getElementById(postType + 'Feed').scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-
-// 点赞功能
-function toggleLike(btn, postId, type) {
-  btn.classList.toggle('liked');
-  const countEl = btn.querySelector('.like-count');
-  const post = COMMUNITY_POSTS[type].find(p => p.id === postId);
-  if (post) {
-    if (btn.classList.contains('liked')) {
-      post.likes++;
-      countEl.textContent = post.likes;
-      btn.querySelector('.heart').textContent = '♥';
-    } else {
-      post.likes--;
-      countEl.textContent = post.likes;
-      btn.querySelector('.heart').textContent = '\u2661';
-    }
-  }
-}
-
-// 分享功能
-function sharePost() {
-  if (navigator.share) {
-    navigator.share({ title: 'TUY社区', url: window.location.href });
-  } else {
-    navigator.clipboard.writeText(window.location.href);
-    var tip = document.createElement('div'); tip.textContent = '链接已复制到剪贴板'; tip.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:var(--accent);color:#000;padding:10px 24px;border-radius:980px;font-size:14px;font-weight:600;z-index:9999;animation:fadeIn .3s'; document.body.appendChild(tip); setTimeout(function(){tip.remove()}, 2000);
-  }
-}
-
-// 关闭所有弹窗
-function closeAllModals() {
-  document.querySelectorAll('.modal.on').forEach(m => {
-    m.classList.remove('on');
-    document.body.style.overflow = '';
-  });
-}
-
-// 查看品牌帖子（从顾客帖子跳转到品牌）
-function viewBrandPost(brandId) {
-  closeAllModals();
-  // 跳转到品牌区并筛选
-  const brandCard = document.querySelector('.card[data-brand="' + brandId + '"]');
-  if (brandCard) {
-    brandCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    brandCard.classList.add('in');
-  }
-}
-
-// 帖子详情弹窗
-function openPostDetail(postId, type) {
-  const post = COMMUNITY_POSTS[type].find(p => p.id === postId);
-  if (!post) return;
-  
-  const badgeClass = post.badge === 'merchant' ? 'merchant-badge' : post.badge === 'featured' ? 'featured-badge' : 'customer-badge';
-  const badgeText = post.badge === 'merchant' ? '认证商家' : post.badge === 'featured' ? 'TUY推荐' : '顾客分享';
-  const avatarClass = post.badge === 'merchant' ? 'merchant' : post.badge === 'featured' ? 'featured' : 'customer';
-  
-  // 图片
-  let imagesHtml = '';
-  if (post.imgCount > 0) {
-    imagesHtml = '<div class="post-detail-images img-' + Math.min(post.imgCount, 5) + '">';
-    for (let i = 0; i < post.imgCount; i++) {
-      imagesHtml += '<div class="post-detail-img-placeholder" style="background:linear-gradient(135deg,#1c2b23,#0d1a12)"></div>';
-    }
-    imagesHtml += '</div>';
-  }
-  
-  // 评论
-  const commentsHtml = '<div class="comment-section"><h4>评论 (' + post.comments + ')</h4>' +
-    '<div class="comment"><div class="comment-avatar">A</div><div class="comment-content"><div class="comment-author">匿名用户</div><div class="comment-text">好东西！已收藏</div><div class="comment-time">1小时前</div></div></div>' +
-    '<div class="comment"><div class="comment-avatar">B</div><div class="comment-content"><div class="comment-author">设计爱好者</div><div class="comment-text">质感看起来很棒，在哪里可以买到？</div><div class="comment-time">3小时前</div></div></div>' +
-    '<div class="comment-input-row"><input type="text" placeholder="写下你的评论..."><button onclick="addComment(this)">发送</button></div>' +
-    '</div>';
-  
-  document.getElementById('pmPostHeader').innerHTML = '<div class="post-header-row"><div class="post-author"><div class="post-avatar ' + avatarClass + '">' + post.avatar + '</div><div class="post-info"><h4>' + post.author + ' <span class="badge ' + badgeClass + '">' + badgeText + '</span></h4><div class="post-time">' + post.time + '</div></div></div></div>';
-  document.getElementById('pmPostBody').innerHTML = '<div class="post-detail-title">' + post.title + '</div><div class="post-detail-text">' + post.text + '</div>' + imagesHtml;
-  document.getElementById('pmPostActions').innerHTML = '<div class="post-detail-actions"><button class="action-btn like-btn" onclick="toggleLike(this,' + postId + ',\'' + type + '')"><span class="icon heart">♥</span> <span class="like-count">' + post.likes + '</span></button><button class="action-btn"><span class="icon">[评论]</span> ' + post.comments + ' 评论</button><button class="action-btn" onclick="sharePost()"><span class="icon">[外]</span> 分享</button></div>';
-  document.getElementById('pmPostComments').innerHTML = commentsHtml;
-  
-  document.getElementById('postModal').classList.add('on');
-  document.body.style.overflow = 'hidden';
-}
-
-// 关闭帖子详情弹窗
-document.getElementById('postModalClose').addEventListener('click', function() {
-  document.getElementById('postModal').classList.remove('on');
-  document.body.style.overflow = '';
-});
-document.getElementById('postModal').addEventListener('click', function(e) {
-  if (e.target === this) {
-    document.getElementById('postModal').classList.remove('on');
-    document.body.style.overflow = '';
-  }
-});
-
-// 添加评论（模拟）
-function addComment(btn) {
-  const input = btn.previousElementSibling;
-  if (!input.value.trim()) return;
-  
-  const commentHtml = '<div class="comment" style="animation:fadeIn .4s var(--ease)"><div class="comment-avatar">我</div><div class="comment-content"><div class="comment-author">我</div><div class="comment-text">' + input.value + '</div><div class="comment-time">刚刚</div></div></div>';
-  btn.parentElement.parentElement.insertAdjacentHTML('beforebegin', commentHtml);
-  input.value = '';
-}
-
-// 滚动时社区区块渐显
-const communityIo = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) {
-    e.target.classList.add('in');
-    communityIo.unobserve(e.target);
-  }
-}), { threshold: .12 });
-document.querySelectorAll('#community .rv').forEach((el, i) => {
-  el.style.transitionDelay = (i % 6 * 60) + 'ms';
-  communityIo.observe(el);
-});
-
-// 初始化渲染
-renderCommunity();
-
-// 更新滚动高亮（包含community）
-
+/* ── INIT ── */
+A(".rv").forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add("v");});
 </script>
 </body>
 </html>
