@@ -1,433 +1,473 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TUY·小众原创设计品牌聚集地</title>
-  <style>
-    :root {
-      --bg: #0d0d0f;
-      --panel: #17171b;
-      --line: #2a2a30;
-      --txt: #f2f2f0;
-      --sub: #9a9aa2;
-      --acc: #c8ff00;
-      --acc2: #ff5c39;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: var(--bg);
-      color: var(--txt);
-      font-family: -apple-system, BlinkMacSystemFont, "PingFangSC", "Microsoft YaHei", sans-serif;
-      line-height: 1.7;
-    }
-    a { color: inherit; text-decoration: none; }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 18px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TUY · 小众原创设计品牌聚集地</title>
+<style>
+:root{
+  --bg:#000; --bg2:#0a0a0b; --card:#111113; --line:rgba(255,255,255,.08);
+  --txt:#f5f5f7; --sub:#a1a1a6; --dim:#6e6e73; --accent:#c8ff00;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Helvetica Neue",Arial,sans-serif;
+  background:var(--bg);color:var(--txt);line-height:1.6;letter-spacing:-.01em;
+  opacity:0;transition:opacity .6s ease;
+}
+body.loaded{opacity:1}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 
-    /* 顶栏导航 */
-    header {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(13,13,15,.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav {
-      display: flex; align-items: center; justify-content: space-between;
-      height: 64px; padding: 0 18px;
-    }
-    .logo { font-size: 26px; font-weight: 900; letter-spacing: 4px; }
-    .logo span { color: var(--acc); }
-    .menu { display: flex; gap: 22px; font-size: 14px; }
-    .menu a { color: var(--sub); transition: .2s; }
-    .menu a:hover { color: var(--acc); }
-    .burger { display: none; font-size: 22px; cursor: pointer; color: var(--txt); }
+/* ===== 导航 ===== */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;height:64px;
+  display:flex;align-items:center;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid transparent;transition:.4s var(--ease);
+}
+header.shrink{height:54px;border-bottom-color:var(--line);background:rgba(0,0,0,.75)}
+.nav{width:100%;max-width:1120px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:20px;font-weight:700;letter-spacing:.18em}
+.logo i{font-style:normal;color:var(--accent)}
+nav{display:flex;gap:34px}
+nav a{font-size:13px;color:var(--sub);transition:color .3s}
+nav a:hover,nav a.on{color:var(--txt)}
+.burger{display:none;width:40px;height:40px;border:none;background:none;cursor:pointer;position:relative}
+.burger span{position:absolute;left:9px;width:22px;height:1.5px;background:var(--txt);transition:.3s var(--ease)}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
-    /* 首屏 */
-    .hero { padding: 70px 0 50px; text-align: center; }
-    .hero h1 { font-size: clamp(30px,7vw,58px); font-weight: 900; line-height: 1.25; }
-    .hero h1 em { font-style: normal; color: var(--acc); }
-    .hero p { color: var(--sub); margin: 18px auto 28px; max-width: 620px; font-size: 15px; }
+/* ===== 首屏 ===== */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:900px;height:900px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,255,0,.10),transparent 62%);top:-320px;filter:blur(20px)}
+.hero h1{font-size:clamp(56px,11vw,132px);font-weight:700;letter-spacing:-.04em;line-height:1.02}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .sub{margin-top:22px;font-size:clamp(16px,2.4vw,22px);color:var(--sub);font-weight:400;max-width:620px}
+.hero .cta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.btn{padding:12px 26px;border-radius:980px;font-size:14px;font-weight:500;transition:.3s var(--ease);border:1px solid transparent;cursor:pointer}
+.btn.solid{background:var(--accent);color:#000}
+.btn.solid:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(200,255,0,.25)}
+.btn.ghost{border-color:rgba(255,255,255,.25);color:var(--txt)}
+.btn.ghost:hover{border-color:var(--txt);background:rgba(255,255,255,.06)}
+.scroll-hint{position:absolute;bottom:34px;font-size:11px;color:var(--dim);letter-spacing:.3em;animation:float 2.4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(8px);opacity:1}}
 
-    /* 按钮 */
-    .btn {
-      display: inline-block; padding: 12px 26px;
-      border-radius: 999px; font-size: 14px; font-weight: 700;
-      cursor: pointer; border: none; transition: .2s;
-    }
-    .btn-a { background: var(--acc); color: #000; }
-    .btn-a:hover { transform: translateY(-2px); }
-    .btn-b { background: transparent; color: var(--txt); border: 1px solid var(--line); margin-left: 10px; }
+/* ===== 滚动字幕 ===== */
+.ticker{border-block:1px solid var(--line);overflow:hidden;padding:14px 0;background:var(--bg2)}
+.ticker div{display:inline-block;white-space:nowrap;animation:mq 28s linear infinite;font-size:12px;letter-spacing:.35em;color:var(--dim)}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    /* 滚动字幕 */
-    .ticker {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: 10px 0; overflow: hidden; white-space: nowrap;
-      color: var(--sub); font-size: 13px;
-    }
-    .ticker div { display: inline-block; animation: mv 22s linear infinite; }
-    @keyframes mv { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+/* ===== 区块 ===== */
+section{padding:120px 0}
+.eyebrow{font-size:12px;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;margin-bottom:14px}
+h2.title{font-size:clamp(30px,5vw,52px);font-weight:700;letter-spacing:-.03em;line-height:1.15}
+.lead{margin-top:16px;color:var(--sub);font-size:clamp(15px,2vw,18px);max-width:640px}
 
-    /* 区块通用 */
-    .section-title { text-align: center; font-size: 28px; font-weight: 700; margin-bottom: 8px; }
-    .section-sub { text-align: center; color: var(--sub); margin-bottom: 40px; font-size: 15px; }
+/* 渐显动画 */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
 
-    /* 品牌筛选按钮 */
-    .filter-bar {
-      display: flex; justify-content: center; flex-wrap: wrap;
-      gap: 10px; margin-bottom: 30px;
-    }
-    .filter-btn {
-      padding: 6px 18px; border-radius: 999px;
-      background: transparent; color: var(--sub);
-      border: 1px solid var(--line); font-size: 13px;
-      cursor: pointer; transition: .2s;
-    }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--acc); color: #000; border-color: var(--acc);
-    }
+/* ===== 品牌 ===== */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:36px 0 40px}
+.filters button{padding:8px 18px;border-radius:980px;border:1px solid var(--line);background:none;color:var(--sub);font-size:13px;cursor:pointer;transition:.3s var(--ease)}
+.filters button:hover{color:var(--txt);border-color:rgba(255,255,255,.3)}
+.filters button.on{background:var(--txt);color:#000;border-color:var(--txt)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;transition:.5s var(--ease)}
+.card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.18);box-shadow:0 24px 60px rgba(0,0,0,.6)}
+.card .cover{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:52px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.9);position:relative;overflow:hidden}
+.card .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.55));opacity:0;transition:.4s}
+.card:hover .cover::after{opacity:1}
+.card .cover b{transition:.7s var(--ease)}
+.card:hover .cover b{transform:scale(1.08)}
+.card .more{position:absolute;left:16px;bottom:16px;font-size:12px;padding:7px 16px;border-radius:980px;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);opacity:0;transform:translateY(10px);transition:.4s var(--ease)}
+.card:hover .more{opacity:1;transform:none}
+.card .body{padding:20px 20px 22px}
+.card h3{font-size:18px;font-weight:600;letter-spacing:-.01em}
+.card p{margin-top:8px;font-size:13.5px;color:var(--sub);min-height:42px}
+.tags{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+.tag{font-size:11px;padding:4px 11px;border-radius:980px;border:1px solid var(--line);color:var(--dim)}
+.links{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
+.links a{font-size:11.5px;padding:5px 12px;border-radius:980px;background:rgba(255,255,255,.06);color:var(--sub);transition:.3s}
+.links a:hover{background:var(--accent);color:#000}
+.g1{background:linear-gradient(135deg,#1c2b23,#0d1a12)}
+.g2{background:linear-gradient(135deg,#2b2418,#161009)}
+.g3{background:linear-gradient(135deg,#182430,#0b1219)}
+.g4{background:linear-gradient(135deg,#2a1c2b,#140d16)}
+.g5{background:linear-gradient(135deg,#232323,#0e0e0e)}
+.g6{background:linear-gradient(135deg,#1b2b2b,#0c1616)}
 
-    /* 品牌展示区 */
-    #brands { padding: 60px 18px; }
-    .brand-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px; max-width: 1100px; margin: 0 auto;
-    }
-    .brand-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 10px; overflow: hidden;
-      transition: transform .25s, border-color .25s;
-    }
-    .brand-card:hover { transform: translateY(-4px); border-color: var(--acc); }
-    .brand-card.hidden { display: none; }
-    .brand-img {
-      width: 100%; height: 180px;
-      background: #1e1e22;
-      display: flex; align-items: center; justify-content: center;
-      color: #555; font-size: 14px;
-    }
-    .brand-info { padding: 16px; }
-    .brand-info h3 { font-size: 17px; margin-bottom: 6px; }
-    .brand-info p { font-size: 13px; color: var(--sub); margin-bottom: 12px; }
-    .brand-tag {
-      display: inline-block; padding: 3px 10px;
-      background: rgba(200,255,0,.12); color: var(--acc);
-      font-size: 12px; border-radius: 20px; margin-right: 6px;
-    }
+/* ===== 关于 ===== */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.about p{color:var(--sub);font-size:16px;margin-bottom:18px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.stats div{background:var(--card);padding:30px 24px}
+.stats b{display:block;font-size:34px;font-weight:700;letter-spacing:-.03em}
+.stats span{font-size:13px;color:var(--dim)}
 
-    /* 关于区 */
-    #about { padding: 60px 18px; max-width: 700px; margin: 0 auto; text-align: center; }
-    #about p { color: #bbb; font-size: 15px; line-height: 1.8; }
+/* ===== 入驻表单 ===== */
+.form{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:36px;margin-top:44px}
+.fg{margin-bottom:22px}
+.fg label{display:block;font-size:13px;color:var(--sub);margin-bottom:8px}
+.fg label i{font-style:normal;color:var(--accent)}
+.fg input,.fg textarea,.fg select{
+  width:100%;padding:13px 15px;background:#0d0d0f;border:1px solid var(--line);
+  border-radius:12px;color:var(--txt);font-size:14px;font-family:inherit;outline:none;transition:.3s var(--ease)
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,0,.12)}
+.fg textarea{min-height:110px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.subhead{font-size:12px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin:34px 0 18px;padding-top:26px;border-top:1px solid var(--line)}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chips label{display:flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid var(--line);border-radius:980px;font-size:13px;color:var(--sub);cursor:pointer;transition:.3s}
+.chips input{display:none}
+.chips label:has(input:checked){border-color:var(--accent);color:var(--txt);background:rgba(200,255,0,.08)}
+.submit{width:100%;padding:15px;border:none;border-radius:980px;background:var(--accent);color:#000;font-size:15px;font-weight:600;cursor:pointer;transition:.3s var(--ease)}
+.submit:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,255,0,.25)}
+.hint{margin-top:14px;text-align:center;font-size:12px;color:var(--dim)}
+.ok{display:none;text-align:center;padding:40px 20px}
+.ok.on{display:block;animation:pop .6s var(--ease)}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.ok i{display:inline-flex;width:56px;height:56px;border-radius:50%;background:rgba(200,255,0,.14);color:var(--accent);align-items:center;justify-content:center;font-size:26px;font-style:normal;margin-bottom:16px}
+.ok h3{font-size:22px;margin-bottom:8px}
+.ok p{color:var(--sub);font-size:14px}
 
-    /* 入驻申请表单 */
-    #apply { padding: 60px 18px; max-width: 560px; margin: 0 auto; }
-    .form-group { margin-bottom: 18px; }
-    .form-group label { display: block; font-size: 14px; color: var(--sub); margin-bottom: 6px; }
-    .form-group input, .form-group textarea, .form-group select {
-      width: 100%; padding: 10px 12px;
-      background: var(--panel); border: 1px solid var(--line);
-      border-radius: 6px; color: var(--txt); font-size: 14px; outline: none; transition: border-color .2s;
-    }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--acc); }
-    .form-group textarea { resize: vertical; min-height: 90px; }
-    .form-submit {
-      width: 100%; padding: 12px;
-      background: var(--acc); color: #000; font-weight: 700;
-      border: none; border-radius: 6px; font-size: 15px; cursor: pointer; transition: opacity .2s;
-    }
-    .form-submit:hover { opacity: 0.85; }
-    .form-hint { font-size: 12px; color: #666; margin-top: 10px; text-align: center; }
+/* ===== 弹窗 ===== */
+.modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.7);backdrop-filter:blur(12px)}
+.modal.on{display:flex;animation:fade .3s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.mbox{width:100%;max-width:560px;max-height:84vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px;position:relative}
+.mbox .close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--sub);cursor:pointer;font-size:16px}
+.mbox h3{font-size:26px;letter-spacing:-.02em}
+.mbox .m-sub{color:var(--dim);font-size:13px;margin:6px 0 20px}
+.mbox h4{font-size:12px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin:22px 0 8px}
+.mbox p{color:var(--sub);font-size:14.5px}
+.mbox .links a{font-size:13px;padding:8px 16px}
 
-    /* 表单成功提示（默认隐藏） */
-    .form-success {
-      display: none; text-align: center; padding: 40px 20px;
-    }
-    .form-success h3 { color: var(--acc); font-size: 22px; margin-bottom: 10px; }
-    .form-success p { color: var(--sub); font-size: 15px; }
+/* ===== 底部 ===== */
+footer{border-top:1px solid var(--line);padding:64px 0 40px;background:var(--bg2)}
+.fgrid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+footer h5{font-size:13px;letter-spacing:.14em;color:var(--dim);text-transform:uppercase;margin-bottom:14px}
+footer li{list-style:none;margin-bottom:10px;font-size:14px;color:var(--sub)}
+footer li a:hover{color:var(--txt)}
+.copy{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:12px;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+#mail{cursor:pointer;color:var(--accent)}
 
-    /* 底部联系区域 */
-    footer {
-      text-align: center; padding: 40px 20px; margin-top: 20px;
-      font-size: 14px; color: var(--sub);
-      border-top: 1px solid var(--line);
-    }
-    footer p { margin: 0 0 10px 0; }
-    #contact-mail {
-      cursor: pointer; color: #0070f3; text-decoration: underline;
-    }
-    .social-links { margin-top: 16px; }
-    .social-links a {
-      display: inline-block; margin: 0 8px; color: var(--sub);
-      font-size: 14px; transition: color .2s;
-    }
-    .social-links a:hover { color: var(--acc); }
+/* 回到顶部 */
+#top{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);
+  background:rgba(20,20,22,.8);backdrop-filter:blur(10px);color:var(--txt);cursor:pointer;
+  opacity:0;transform:translateY(16px);pointer-events:none;transition:.4s var(--ease);z-index:90}
+#top.on{opacity:1;transform:none;pointer-events:auto}
+#top:hover{background:var(--accent);color:#000;border-color:var(--accent)}
 
-    /* 回到顶部按钮 */
-    .back-to-top {
-      position: fixed; bottom: 30px; right: 30px;
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--acc); color: #000;
-      border: none; font-size: 20px; font-weight: 700;
-      cursor: pointer; opacity: 0; visibility: hidden;
-      transition: opacity .3s, transform .3s;
-      z-index: 99;
-    }
-    .back-to-top.show { opacity: 1; visibility: visible; }
-    .back-to-top:hover { transform: translateY(-3px); }
-
-    /* 移动端适配 */
-    @media (max-width: 768px) {
-      .menu {
-        position: fixed; top: 64px; left: 0; right: 0;
-        background: rgba(13,13,15,.97);
-        flex-direction: column; align-items: center;
-        padding: 20px 0; gap: 18px;
-        border-bottom: 1px solid var(--line);
-        transform: translateY(-120%); opacity: 0;
-        transition: transform .3s, opacity .3s;
-        pointer-events: none;
-      }
-      .menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
-      .burger { display: block; }
-    }
-  </style>
+/* 响应式 */
+@media(max-width:820px){
+  nav{position:fixed;inset:64px 0 auto 0;flex-direction:column;gap:0;background:rgba(0,0,0,.94);
+      backdrop-filter:blur(20px);padding:8px 24px 20px;transform:translateY(-120%);transition:.4s var(--ease);border-bottom:1px solid var(--line)}
+  nav.open{transform:none}
+  nav a{padding:14px 0;font-size:16px;border-bottom:1px solid var(--line)}
+  .burger{display:block}
+  .about{grid-template-columns:1fr;gap:36px}
+  .two{grid-template-columns:1fr}
+  section{padding:80px 0}
+  .form{padding:24px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
 </head>
 <body>
 
-  <!-- 顶栏导航 -->
-  <header>
-    <div class="nav">
-      <div class="logo">TUY<span>.</span></div>
-      <div class="menu" id="menu">
-        <a href="#brands" onclick="closeMenu()">品牌</a>
-        <a href="#about" onclick="closeMenu()">关于</a>
-        <a href="#apply" onclick="closeMenu()">入驻</a>
-        <a href="#contact" onclick="closeMenu()">联系</a>
-      </div>
-      <div class="burger" id="burger" onclick="toggleMenu()">☰</div>
-    </div>
-  </header>
-
-  <!-- 首屏 -->
-  <section class="hero">
-    <h1>TUY<em>.</em></h1>
-    <p>小众原创设计品牌聚集地，发现不一样的潮流态度</p>
-    <a href="#brands" class="btn btn-a">探索品牌</a>
-    <a href="#apply" class="btn btn-b">品牌入驻</a>
-  </section>
-
-  <!-- 滚动字幕 -->
-  <div class="ticker">
-    <div>原创设计 · 独立品牌 · 潮流态度 · 小众美学 · 原创设计 · 独立品牌 · 潮流态度 · 小众美学</div>
+<header id="hd">
+  <div class="nav">
+    <a class="logo" href="#top-page">TUY<i>.</i></a>
+    <nav id="menu">
+      <a href="#brands">品牌</a>
+      <a href="#about">关于</a>
+      <a href="#apply">入驻</a>
+      <a href="#contact">联系</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="菜单"><span></span><span></span><span></span></button>
   </div>
+</header>
 
-  <!-- 品牌展示区 -->
-  <section id="brands">
-    <h2 class="section-title">入驻品牌</h2>
-    <p class="section-sub">持续收录国内外小众原创设计品牌</p>
+<!-- 首屏 -->
+<section class="hero" id="top-page">
+  <h1 class="rv">TUY<em>.</em></h1>
+  <p class="sub rv">小众原创设计品牌的聚集地。<br>我们不做销售，只为真正的设计，找到对的人。</p>
+  <div class="cta rv">
+    <a class="btn solid" href="#brands">探索品牌</a>
+    <a class="btn ghost" href="#apply">品牌入驻</a>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
 
-    <!-- 品牌筛选按钮 -->
-    <div class="filter-bar">
-      <button class="filter-btn active" data-filter="all">全部</button>
-      <button class="filter-btn" data-filter="服饰">服饰</button>
-      <button class="filter-btn" data-filter="配饰">配饰</button>
-      <button class="filter-btn" data-filter="包袋">包袋</button>
-      <button class="filter-btn" data-filter="文创">文创</button>
-      <button class="filter-btn" data-filter="生活方式">生活方式</button>
+<!-- 滚动字幕 -->
+<div class="ticker"><div>原创设计 · 独立品牌 · 品控严选 · 潮流态度 · 小众美学 · 原创设计 · 独立品牌 · 品控严选 · 潮流态度 · 小众美学 · </div></div>
+
+<!-- 品牌 -->
+<section id="brands">
+  <div class="wrap">
+    <div class="eyebrow rv">Brands</div>
+    <h2 class="title rv">已收录品牌</h2>
+    <p class="lead rv">每一个品牌都经过人工品控审核，只展示真正坚持原创的独立设计。</p>
+
+    <div class="filters rv" id="filters">
+      <button class="on" data-f="all">全部</button>
+      <button data-f="服装">服装</button>
+      <button data-f="首饰">首饰</button>
+      <button data-f="配饰">配饰</button>
+      <button data-f="包袋">包袋</button>
+      <button data-f="生活方式">生活方式</button>
     </div>
 
-    <div class="brand-grid">
-      <div class="brand-card" data-category="服饰">
-        <div class="brand-img">品牌封面图</div>
-        <div class="brand-info">
-          <h3>品牌名称 A</h3>
-          <p>原创街头服饰，主打机能风与极简剪裁。</p>
-          <span class="brand-tag">服饰</span>
-          <span class="brand-tag">国内</span>
+    <div class="grid" id="grid">
+      <article class="card rv" data-cat="服装" data-brand="A">
+        <div class="cover g1"><b>AX</b><span class="more">查看详情</span></div>
+        <div class="body">
+          <h3>AXIS STUDIO</h3>
+          <p>机能剪裁与极简廓形，主打都市通勤与街头之间的平衡。</p>
+          <div class="tags"><span class="tag">服装</span><span class="tag">国内</span><span class="tag">2021 创立</span></div>
+          <div class="links"><a href="#" onclick="return false">淘宝</a><a href="#" onclick="return false">抖音</a><a href="#" onclick="return false">官网</a></div>
         </div>
-      </div>
-      <div class="brand-card" data-category="配饰">
-        <div class="brand-img">品牌封面图</div>
-        <div class="brand-info">
-          <h3>品牌名称 B</h3>
-          <p>手工银饰工作室，每一件都是独立设计。</p>
-          <span class="brand-tag">配饰</span>
-          <span class="brand-tag">国内</span>
+      </article>
+
+      <article class="card rv" data-cat="首饰" data-brand="B">
+        <div class="cover g2"><b>SL</b><span class="more">查看详情</span></div>
+        <div class="body">
+          <h3>SILVER LAB</h3>
+          <p>手工银饰工作室，每一件都由匠人单独打磨，不做批量复刻。</p>
+          <div class="tags"><span class="tag">首饰</span><span class="tag">国内</span><span class="tag">手工</span></div>
+          <div class="links"><a href="#" onclick="return false">淘宝</a><a href="#" onclick="return false">小红书</a></div>
         </div>
-      </div>
-      <div class="brand-card" data-category="包袋">
-        <div class="brand-img">品牌封面图</div>
-        <div class="brand-info">
-          <h3>品牌名称 C</h3>
-          <p>日式复古帆布包，注重材质与细节。</p>
-          <span class="brand-tag">包袋</span>
-          <span class="brand-tag">海外</span>
+      </article>
+
+      <article class="card rv" data-cat="包袋" data-brand="C">
+        <div class="cover g3"><b>KN</b><span class="more">查看详情</span></div>
+        <div class="body">
+          <h3>KANON</h3>
+          <p>日式复古帆布包，重视面料克重与走线细节，越用越有味道。</p>
+          <div class="tags"><span class="tag">包袋</span><span class="tag">海外</span><span class="tag">帆布</span></div>
+          <div class="links"><a href="#" onclick="return false">京东</a><a href="#" onclick="return false">官网</a></div>
         </div>
-      </div>
-      <div class="brand-card" data-category="文创">
-        <div class="brand-img">品牌封面图</div>
-        <div class="brand-info">
-          <h3>品牌名称 D</h3>
-          <p>插画师原创周边，贴纸、明信片、手账本。</p>
-          <span class="brand-tag">文创</span>
-          <span class="brand-tag">国内</span>
+      </article>
+
+      <article class="card rv" data-cat="配饰" data-brand="D">
+        <div class="cover g4"><b>MR</b><span class="more">查看详情</span></div>
+        <div class="body">
+          <h3>MIRROR ROOM</h3>
+          <p>帽饰与围巾为主，用色大胆，擅长把艺术图案落到日常单品上。</p>
+          <div class="tags"><span class="tag">配饰</span><span class="tag">国内</span></div>
+          <div class="links"><a href="#" onclick="return false">淘宝</a><a href="#" onclick="return false">抖音</a></div>
         </div>
-      </div>
-      <div class="brand-card" data-category="生活方式">
-        <div class="brand-img">品牌封面图</div>
-        <div class="brand-info">
-          <h3>品牌名称 E</h3>
-          <p>极简家居好物，让日常生活更有质感。</p>
-          <span class="brand-tag">生活方式</span>
-          <span class="brand-tag">海外</span>
+      </article>
+
+      <article class="card rv" data-cat="服装" data-brand="E">
+        <div class="cover g5"><b>NG</b><span class="more">查看详情</span></div>
+        <div class="body">
+          <h3>NORTH GRAIN</h3>
+          <p>以天然面料为核心，主打可长期穿着的基础款与解构细节。</p>
+          <div class="tags"><span class="tag">服装</span><span class="tag">国内</span><span class="tag">天然面料</span></div>
+          <div class="links"><a href="#" onclick="return false">淘宝</a><a href="#" onclick="return false">小红书</a><a href="#" onclick="return false">官网</a></div>
         </div>
-      </div>
-      <div class="brand-card" data-category="服饰">
-        <div class="brand-img">品牌封面图</div>
-        <div class="brand-info">
-          <h3>品牌名称 F</h3>
-          <p>复古牛仔改造，每件都是孤品。</p>
-          <span class="brand-tag">服饰</span>
-          <span class="brand-tag">国内</span>
+      </article>
+
+      <article class="card rv" data-cat="生活方式" data-brand="F">
+        <div class="cover g6"><b>OS</b><span class="more">查看详情</span></div>
+        <div class="body">
+          <h3>OFF SEASON</h3>
+          <p>香薰与家居小物，把季节感做成可以带走的气味与器物。</p>
+          <div class="tags"><span class="tag">生活方式</span><span class="tag">国内</span></div>
+          <div class="links"><a href="#" onclick="return false">京东</a><a href="#" onclick="return false">抖音</a></div>
         </div>
-      </div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 关于 -->
-  <section id="about">
-    <h2 class="section-title">关于 TUY</h2>
-    <p>
-      TUY 是一个专注于小众原创设计品牌的聚集地。我们希望把那些有态度、有审美、不随波逐流的独立品牌带到更多人面前。
-      无论你是做服饰、配饰、包袋、文创还是生活方式，只要坚持原创，这里就有你的位置。
-    </p>
-  </section>
+<!-- 关于 -->
+<section id="about">
+  <div class="wrap about">
+    <div class="rv">
+      <div class="eyebrow">About</div>
+      <h2 class="title">我们只做一件事：<br>让原创被看见</h2>
+      <p style="margin-top:22px">TUY 不卖货、不抽成、不做自营。我们只做两件事——<b style="color:var(--txt)">替用户把关</b>，<b style="color:var(--txt)">替品牌发声</b>。</p>
+      <p>每一个入驻品牌都会经过人工审核：是否有原创设计能力、是否有稳定产出、是否存在抄袭或仿款记录。通过之后，我们只展示品牌自己的官方店铺链接，交易完全在品牌方完成。</p>
+      <p>同时，我们鼓励品牌公开自己的品牌故事、用料与工艺，让用户买得明白，也让认真做东西的人被认真对待。</p>
+    </div>
+    <div class="stats rv">
+      <div><b>100%</b><span>人工品控审核</span></div>
+      <div><b>0</b><span>平台抽成 / 自营销售</span></div>
+      <div><b>3</b><span>核心品类：服装 · 首饰 · 配饰</span></div>
+      <div><b>7天</b><span>入驻审核平均反馈</span></div>
+    </div>
+  </div>
+</section>
 
-  <!-- 入驻申请表单 -->
-  <section id="apply">
-    <h2 class="section-title">品牌入驻申请</h2>
-    <p class="section-sub">填写信息，我们会尽快与你联系</p>
+<!-- 入驻 -->
+<section id="apply">
+  <div class="wrap">
+    <div class="eyebrow rv">Apply</div>
+    <h2 class="title rv">品牌入驻申请</h2>
+    <p class="lead rv">信息越完整，审核越快。请尽量填写真实的店铺链接与品牌资料。</p>
 
-    <form id="apply-form">
-      <div class="form-group">
-        <label>品牌名称 *</label>
-        <input type="text" placeholder="请输入品牌名称" required>
+    <form class="form rv" id="applyForm">
+      <div class="two">
+        <div class="fg"><label>品牌名称 <i>*</i></label><input type="text" placeholder="如 AXIS STUDIO" required></div>
+        <div class="fg"><label>主理人 / 联系人 <i>*</i></label><input type="text" placeholder="你的姓名" required></div>
       </div>
-      <div class="form-group">
-        <label>品牌类型</label>
-        <select>
-          <option value="">请选择</option>
-          <option>服饰</option>
-          <option>配饰</option>
-          <option>包袋</option>
-          <option>文创</option>
-          <option>生活方式</option>
-          <option>其他</option>
-        </select>
+      <div class="two">
+        <div class="fg"><label>联系邮箱 <i>*</i></label><input type="email" placeholder="example@mail.com" required></div>
+        <div class="fg"><label>手机号 / 微信</label><input type="text" placeholder="便于快速沟通（选填）"></div>
       </div>
-      <div class="form-group">
-        <label>联系人 *</label>
-        <input type="text" placeholder="你的姓名" required>
+
+      <div class="fg"><label>主营品类 <i>*</i></label>
+        <div class="chips">
+          <label><input type="checkbox" name="cat" value="服装">服装</label>
+          <label><input type="checkbox" name="cat" value="首饰">首饰</label>
+          <label><input type="checkbox" name="cat" value="配饰">配饰</label>
+          <label><input type="checkbox" name="cat" value="包袋">包袋</label>
+          <label><input type="checkbox" name="cat" value="鞋履">鞋履</label>
+          <label><input type="checkbox" name="cat" value="生活方式">生活方式</label>
+        </div>
       </div>
-      <div class="form-group">
-        <label>联系邮箱 *</label>
-        <input type="email" placeholder="example@mail.com" required>
+
+      <div class="subhead">店铺与作品链接</div>
+      <div class="fg"><label>淘宝店铺链接 <i>*</i></label><input type="url" placeholder="https://shop.taobao.com/..." required></div>
+      <div class="two">
+        <div class="fg"><label>京东店铺链接</label><input type="url" placeholder="https://...（选填）"></div>
+        <div class="fg"><label>抖音店铺 / 账号</label><input type="url" placeholder="https://...（选填）"></div>
       </div>
-      <div class="form-group">
-        <label>品牌简介</label>
-        <textarea placeholder="简单介绍你的品牌、设计理念和作品方向"></textarea>
+      <div class="two">
+        <div class="fg"><label>小红书账号</label><input type="url" placeholder="https://...（选填）"></div>
+        <div class="fg"><label>品牌官网 / 其他店铺</label><input type="url" placeholder="https://...（选填）"></div>
       </div>
-      <div class="form-group">
-        <label>作品链接</label>
-        <input type="url" placeholder="官网 / 小红书 / Instagram 等">
-      </div>
-      <button type="submit" class="form-submit">提交申请</button>
-      <p class="form-hint">提交后我们会通过邮箱与你联系，请保持邮箱畅通</p>
+      <div class="fg"><label>作品集链接</label><input type="url" placeholder="Behance / Instagram / 云盘相册等（选填）"></div>
+
+      <div class="subhead">品牌资料</div>
+      <div class="fg"><label>品牌故事 <i>*</i></label><textarea placeholder="品牌怎么来的、想表达什么、设计灵感来源……（200 字以上更容易通过）" required></textarea></div>
+      <div class="fg"><label>用料与工艺</label><textarea placeholder="主要面料/材质、产地、是否手工、生产方式等"></textarea></div>
+      <div class="fg"><label>原创说明</label><textarea placeholder="是否有设计稿、外观专利、版权登记等可佐证原创的材料？"></textarea></div>
+      <div class="fg"><label>补充说明</label><textarea placeholder="其他希望我们了解的信息"></textarea></div>
+
+      <button type="submit" class="submit">提交入驻申请</button>
+      <p class="hint">提交后 7 个工作日内会通过邮箱回复审核结果</p>
     </form>
 
-    <!-- 提交成功提示 -->
-    <div class="form-success" id="form-success">
-      <h3>申请已提交！</h3>
-      <p>感谢你的申请，我们会在 1-3 个工作日内通过邮箱与你联系，请保持关注。</p>
+    <div class="ok" id="okBox">
+      <i>✓</i>
+      <h3>申请已收到</h3>
+      <p>我们会尽快审核你的品牌资料，并通过邮箱与你联系。</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 底部联系区域 -->
-  <footer id="contact">
-    <p>品牌入驻 / 合作咨询</p>
-    <p>
-      邮箱：<span id="contact-mail" onclick="showEmail()">点击此处显示</span>
-    </p>
-    <div class="social-links">
-      <a href="#" target="_blank">小红书</a>
-      <a href="#" target="_blank">微信公众号</a>
-      <a href="#" target="_blank">微博</a>
+<!-- 底部 -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h5>TUY</h5>
+        <p style="color:var(--sub);font-size:14px;max-width:280px">小众原创设计品牌聚集地<br>只做导流与品控，不做销售。</p>
+      </div>
+      <div><h5>导航</h5><ul><li><a href="#brands">已收录品牌</a></li><li><a href="#about">关于 TUY</a></li><li><a href="#apply">品牌入驻</a></li></ul></div>
+      <div><h5>关注我们</h5><ul><li><a href="#" onclick="return false">小红书</a></li><li><a href="#" onclick="return false">抖音</a></li><li><a href="#" onclick="return false">微博</a></li></ul></div>
+      <div><h5>合作咨询</h5><ul><li>邮箱：<span id="mail" onclick="this.innerText='zys20071129@qq.com';this.removeAttribute('onclick')">点击显示</span></li><li>品牌入驻 / 媒体合作</li></ul></div>
     </div>
-    <p style="margin-top:20px;font-size:12px;color:#555;">© 2025 TUY. All rights reserved.</p>
-  </footer>
+    <div class="copy"><span>© 2026 TUY. All rights reserved.</span><span>本站不销售任何商品，所有交易由品牌方自行完成。</span></div>
+  </div>
+</footer>
 
-  <!-- 回到顶部按钮 -->
-  <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+<!-- 品牌详情弹窗 -->
+<div class="modal" id="modal">
+  <div class="mbox">
+    <button class="close" id="mClose">×</button>
+    <h3 id="mName"></h3>
+    <div class="m-sub" id="mSub"></div>
+    <h4>品牌故事</h4><p id="mStory"></p>
+    <h4>用料与工艺</h4><p id="mMat"></p>
+    <h4>官方店铺</h4><div class="links" id="mLinks"></div>
+  </div>
+</div>
 
-  <script>
-    // 移动端菜单切换
-    function toggleMenu() {
-      document.getElementById('menu').classList.toggle('open');
-    }
-    function closeMenu() {
-      document.getElementById('menu').classList.remove('open');
-    }
+<button id="top" aria-label="回到顶部">↑</button>
 
-    // 品牌筛选
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        // 按钮激活状态
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
+<script>
+/* 入场 */
+addEventListener('load',()=>document.body.classList.add('loaded'));
+addEventListener('DOMContentLoaded',()=>document.body.classList.add('loaded'));
 
-        // 筛选品牌卡片
-        const filter = this.getAttribute('data-filter');
-        document.querySelectorAll('.brand-card').forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
-        });
-      });
-    });
+/* 滚动渐显 */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%6*60)+'ms';io.observe(el)});
 
-    // 回到顶部按钮显示/隐藏
-    window.addEventListener('scroll', function() {
-      const btn = document.getElementById('backToTop');
-      if (window.scrollY > 400) {
-        btn.classList.add('show');
-      } else {
-        btn.classList.remove('show');
-      }
-    });
+/* 导航收缩 + 回到顶部 + 高亮 */
+const hd=document.getElementById('hd'),topBtn=document.getElementById('top');
+const secs=[...document.querySelectorAll('section[id]')];
+addEventListener('scroll',()=>{
+  const y=scrollY;
+  hd.classList.toggle('shrink',y>30);
+  topBtn.classList.toggle('on',y>400);
+  let cur='';secs.forEach(s=>{if(y>=s.offsetTop-120)cur=s.id});
+  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+topBtn.onclick=()=>scrollTo({top:0,behavior:'smooth'});
 
-    // 回到顶部
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+/* 汉堡菜单 */
+const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.onclick=()=>{burger.classList.toggle('open');menu.classList.toggle('open')};
+menu.querySelectorAll('a').forEach(a=>a.onclick=()=>{burger.classList.remove('open');menu.classList.remove('open')});
 
-    // 邮箱显示
-    function showEmail() {
-      const el = document.getElementById('contact-mail');
-      el.innerText = 'zys20071129@qq.com';
-      el.removeAttribute('onclick');
-    }
+/* 品牌筛选 */
+document.getElementById('filters').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('#filters button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const f=b.dataset.f;
+  document.querySelectorAll('.card').forEach(c=>{
+    const show=(f==='all'||c.dataset.cat===f);
+    c.style.display=show?'':'none';
+    if(show){c.classList.remove('in');requestAnimationFrame(()=>requestAnimationFrame(()=>c.classList.add('in')))}
+  });
+});
 
-    // 表单提交
-    document.getElementById('apply-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      this.style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-    });
-  </script>
+/* 品牌详情 */
+const DATA={
+ A:{n:'AXIS STUDIO',s:'服装 · 国内 · 2021 创立',st:'由两位建筑背景的设计师创立，把结构思维带进服装。品牌名取自坐标轴，意在探索身体与空间之间的关系。所有版型均为自研，不做市面通货改款。',m:'主面料为高克重斜纹布与再生尼龙，五金件采用定制开模，成衣由合作十年以上的老厂小批量制作，单款首单不超过 200 件。',l:['淘宝','抖音','官网']},
+ B:{n:'SILVER LAB',s:'首饰 · 国内 · 手工',st:'一间只有三个人的银饰工作室。每一件作品从起版到抛光都由同一位匠人完成，因此同一款也会有细微差别，这正是手工的意义。',m:'925 纯银为主，部分款式做旧氧化处理；不使用电镀仿银材质，所有原料均可提供检测证明。',l:['淘宝','小红书']},
+ C:{n:'KANON',s:'包袋 · 海外',st:'来自大阪的小众包袋品牌，主张"一只包用十年"。设计语言克制，靠结构与面料本身说话。',m:'16oz 以上重磅帆布，YKK 拉链，加固缝线；内衬使用回收棉布，每只包都有独立编号。',l:['京东','官网']},
+ D:{n:'MIRROR ROOM',s:'配饰 · 国内',st:'以帽饰与围巾为核心的配饰品牌，常与独立插画师联名，把平面艺术转译成可穿戴的单品。',m:'羊毛混纺与棉麻为主，印花采用数码直喷，色牢度经过第三方检测。',l:['淘宝','抖音']},
+ E:{n:'NORTH GRAIN',s:'服装 · 国内 · 天然面料',st:'坚持"少而精"的路线，一年只出两个系列，基础款会长期在售并持续改良版型。',m:'以有机棉、亚麻、羊毛为主，染料使用低污染工艺，成衣经过预缩水处理。',l:['淘宝','小红书','官网']},
+ F:{n:'OFF SEASON',s:'生活方式 · 国内',st:'把季节感做成可带走的气味与器物，从香薰蜡烛到陶瓷杯具，都在探索"日常的仪式感"。',m:'大豆蜡与天然精油调配，陶瓷由景德镇合作窑口小批量烧制，釉色每批略有差异。',l:['京东','抖音']}
+};
+const modal=document.getElementById('modal');
+document.querySelectorAll('.card').forEach(c=>c.onclick=()=>{
+  const d=DATA[c.dataset.brand];if(!d)return;
+  document.getElementById('mName').textContent=d.n;
+  document.getElementById('mSub').textContent=d.s;
+  document.getElementById('mStory').textContent=d.st;
+  document.getElementById('mMat').textContent=d.m;
+  document.getElementById('mLinks').innerHTML=d.l.map(x=>'<a href="#" onclick="return false">'+x+'</a>').join('');
+  modal.classList.add('on');document.body.style.overflow='hidden';
+});
+const closeM=()=>{modal.classList.remove('on');document.body.style.overflow=''};
+document.getElementById('mClose').onclick=closeM;
+modal.onclick=e=>{if(e.target===modal)closeM()};
+addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
 
+/* 表单 */
+document.getElementById('applyForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  e.target.style.display='none';
+  document.getElementById('okBox').classList.add('on');
+  document.getElementById('okBox').scrollIntoView({behavior:'smooth',block:'center'});
+});
+</script>
 </body>
 </html>
