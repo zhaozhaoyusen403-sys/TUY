@@ -1,219 +1,710 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="TUY — 收录小众原创设计品牌，不做销售，只做甄选与导流。">
-<meta property="og:title" content="TUY · 原创设计值得被看见">
-<meta property="og:description" content="收录小众原创品牌，把流量还给创作者。">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#0a0a0c">
-<title>TUY · 原创设计值得被看见</title>
-<style>
-:root{
-  --bg:#0a0a0c;--sf:#111114;--bd:#1c1c22;--tx:#e4e4e8;--mu:#888;
-  --ac:#c9f31d;--ac-d:rgba(201,243,29,.08);
-  --rs:6px;--rm:10px;--rl:14px;--rp:999px;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-button,input,textarea,select{font:inherit;color:inherit}
-img{display:block;max-width:100%}
-.skip{position:absolute;top:-100%;left:16px;padding:8px 16px;background:var(--ac);color:#0a0a0c;border-radius:var(--rm);z-index:999;font-size:13px;font-weight:700}
-.skip:focus{top:12px}
-
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 20px;transition:background .3s,border .3s}
-nav.s{background:rgba(10,10,12,.92);border-bottom:1px solid var(--bd);backdrop-filter:blur(12px)}
-.ni{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
-.lo{font-size:22px;font-weight:900;letter-spacing:6px;color:var(--ac)}
-.nl{display:flex;gap:24px;list-style:none}
-.nl a{font-size:14px;color:var(--mu);position:relative;transition:color .25s}
-.nl a::after{content:"";position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--ac);transition:width .3s}
-.nl a:hover{color:var(--tx)}
-.nl a:hover::after{width:100%}
-.br{display:none;background:none;border:none;font-size:22px;color:var(--tx);cursor:pointer}
-
-/* ── HERO ── */
-.he{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;position:relative;overflow:hidden}
-.he::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(201,243,29,.04) 0%,transparent 60%);pointer-events:none}
-.he h1{font-size:clamp(36px,10vw,64px);font-weight:900;letter-spacing:2px;line-height:1.15}
-.he h1 span{color:var(--ac)}
-.he .sub{margin-top:16px;font-size:clamp(14px,3vw,16px);color:var(--mu);max-width:420px}
-.hb{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.bn{padding:12px 28px;border-radius:var(--rp);font-size:14px;font-weight:600;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
-.bn:active{transform:scale(.96)}
-.bp{background:var(--ac);color:#0a0a0c}
-.bp:hover{box-shadow:0 0 24px rgba(201,243,29,.25)}
-.bg2{background:transparent;border:1.5px solid var(--bd)}
-.bg2:hover{border-color:var(--mu)}
-
-/* ── SECTIONS ── */
-section{padding:64px 0}
-.ct{max-width:1120px;margin:0 auto;padding:0 20px}
-.sh{text-align:center;margin-bottom:32px}
-.sh h2{font-size:clamp(20px,5vw,28px);font-weight:800;letter-spacing:1px}
-.sh p{margin-top:8px;color:var(--mu);font-size:14px}
-
-/* ── EMPTY STATE ── */
-.es{text-align:center;padding:60px 20px}
-.es .ic{font-size:40px;margin-bottom:16px;opacity:.3}
-.es h3{font-size:18px;font-weight:700;margin-bottom:8px}
-.es p{color:var(--mu);font-size:14px;max-width:360px;margin:0 auto 20px}
-
-/* ── FORM ── */
-.fg{max-width:480px;margin:0 auto;display:grid;gap:14px}
-.fg input,.fg textarea,.fg select{width:100%;padding:12px 14px;border-radius:var(--rm);border:1.5px solid var(--bd);background:var(--sf);font-size:14px;outline:none;transition:border-color .2s}
-.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--ac)}
-.fl{font-size:13px;color:var(--mu)}
-.fd{display:grid;gap:4px}
-.fh{font-size:13px;color:var(--mu);line-height:1.5}
-
-/* ── ABOUT ── */
-.av{text-align:center;max-width:520px;margin:0 auto;font-size:15px;color:var(--mu);line-height:1.9}
-.av strong{color:var(--tx);font-weight:700}
-
-/* ── FOOTER ── */
-footer{text-align:center;padding:32px 20px;border-top:1px solid var(--bd);font-size:13px;color:var(--mu)}
-
-/* ── MODAL ── */
-.ov{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:200;display:none;align-items:center;justify-content:center;padding:16px}
-.ov.o{display:flex}
-.md{background:var(--sf);border:1px solid var(--bd);border-radius:var(--rl);width:min(460px,100%);max-height:85vh;overflow-y:auto;padding:24px;position:relative}
-.mx{position:absolute;top:12px;right:12px;background:var(--bd);border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;color:var(--tx);font-size:16px;display:flex;align-items:center;justify-content:center}
-.md h3{font-size:17px;font-weight:800}
-.md .su{color:var(--ac);font-size:13px;margin-top:4px}
-.md .st{margin-top:14px;font-size:14px;line-height:1.8;color:#bbb}
-
-/* ── REVEAL ── */
-.rv{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
-.rv.v{opacity:1;transform:none}
-
-/* ── RESPONSIVE ── */
-@media(max-width:640px){
-  .nl{display:none;position:absolute;top:56px;left:0;right:0;background:var(--bg);flex-direction:column;padding:16px;gap:16px;border-bottom:1px solid var(--bd)}
-  .nl.o{display:flex}
-  .br{display:block}
-  .he h1{font-size:32px}
-}
-@media print{
-  nav,.hb,.br,.mx,footer{display:none!important}
-  .ov{position:static;background:none}
-  .md{max-height:none;box-shadow:none;border:1px solid #ccc}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111210">
+  <meta name="description" content="TUY 是为小众原创设计品牌而生的发现与交流空间。我们不售卖商品，只认真介绍设计、材质、故事，以及品牌自己的官方渠道。">
+  <meta property="og:title" content="TUY — 独立设计，值得被看见">
+  <meta property="og:description" content="一个关于独立设计、风格表达与真实连接的空间。">
+  <title>TUY® — 独立设计，值得被看见</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #111210;
+      --ink-2: #171916;
+      --ink-3: #22241f;
+      --paper: #f1efe8;
+      --paper-2: #e6e4dc;
+      --cream: #fbfaf6;
+      --white: #f4f3ef;
+      --muted: #a5a69d;
+      --mid: #6b6d65;
+      --edge-dark: rgba(255,255,255,.14);
+      --edge-light: rgba(17,18,16,.16);
+      --accent: #d7fd51;
+      --sans: "Inter", "SF Pro Display", "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      --serif: "Iowan Old Style", "Georgia", "Songti SC", "STSong", serif;
+      --ease: cubic-bezier(.22,1,.36,1);
+      --page: min(1344px, calc(100% - 104px));
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+    body { margin: 0; background: var(--ink); color: var(--white); font-family: var(--sans); -webkit-font-smoothing: antialiased; line-height: 1.55; }
+    body.menu-open { overflow: hidden; }
+    ::selection { background: var(--accent); color: var(--ink); }
+    img { display: block; max-width: 100%; }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    a { text-decoration: none; color: inherit; }
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .container { width: var(--page); margin-inline: auto; }
+    .muted { color: var(--muted); }
+    .eyebrow { display: flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: .18em; font-weight: 650; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 23px; height: 1px; background: currentColor; }
+    .eyebrow.lime { color: var(--accent); }
+    .button { min-height: 50px; border: 1px solid transparent; border-radius: 2px; padding: 13px 20px; font-weight: 660; font-size: 13px; display: inline-flex; justify-content: center; align-items: center; gap: 22px; transition: transform .24s var(--ease), background .24s, border-color .24s, color .24s; }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { background: var(--accent); color: var(--ink); }
+    .button.primary:hover { background: #e4ff85; }
+    .button.outline { background: transparent; border-color: var(--edge-dark); color: var(--white); }
+    .button.outline:hover { border-color: var(--white); }
+    .button.dark { background: var(--ink); color: var(--paper); }
+    .button.dark:hover { background: #393c32; }
+    .button.ghost-dark { color: var(--ink); border-color: var(--edge-light); }
+    .button .arrow { font-size: 18px; font-weight: 400; }
+    .topbar { position: fixed; inset: 0 0 auto; z-index: 50; height: 82px; background: rgba(17,18,16,.87); border-bottom: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: height .3s, background .3s; }
+    .topbar.compact { height: 68px; background: rgba(17,18,16,.96); }
+    .topbar-inner { width: var(--page); height: 100%; margin: auto; display: flex; justify-content: space-between; align-items: center; gap: 28px; }
+    .wordmark { font-size: 28px; font-weight: 900; letter-spacing: -.09em; line-height: 1; white-space: nowrap; }
+    .wordmark span { color: var(--accent); letter-spacing: -.07em; }
+    .wordmark sup { font-size: 9px; margin-left: 6px; font-weight: 500; letter-spacing: 0; vertical-align: super; }
+    .main-nav { display: flex; gap: clamp(20px,3vw,42px); align-items: center; margin-left: auto; }
+    .main-nav a { font-size: 12px; letter-spacing: .025em; color: #b7b9b0; transition: color .2s; }
+    .main-nav a:hover, .main-nav a.active { color: var(--accent); }
+    .nav-apply { font-size: 11px; font-weight: 700; letter-spacing: .08em; white-space: nowrap; border: 1px solid rgba(255,255,255,.24); padding: 10px 15px; transition: background .2s,color .2s; }
+    .nav-apply:hover { background: var(--accent); color: var(--ink); }
+    .menu-toggle { display: none; width: 38px; height: 38px; border: 1px solid var(--edge-dark); background: transparent; color: var(--white); font-size: 22px; }
+    .hero { min-height: min(850px, 100svh); padding-top: 82px; position: relative; overflow: hidden; background: radial-gradient(ellipse at 65% 41%,#242820 0%,#111210 58%); }
+    .hero::before { content: ""; position: absolute; inset: 0; opacity: .14; background-image: linear-gradient(to right, rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.12) 1px,transparent 1px); background-size: 95px 95px; mask-image: linear-gradient(90deg,transparent 13%,black 100%); pointer-events: none; }
+    .hero-inner { min-height: calc(min(850px, 100svh) - 82px); display: grid; grid-template-columns: 1.1fr .9fr; gap: 26px; align-items: center; position: relative; padding: 74px 0 100px; }
+    .hero-copy { z-index: 2; }
+    .hero-copy .eyebrow { color: var(--accent); margin-bottom: 28px; }
+    .hero h1 { font-weight: 790; font-size: clamp(58px, 7.1vw, 113px); line-height: 1.12; letter-spacing: -.092em; margin: 0; }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero h1 .thin { font-weight: 330; }
+    .hero-lead { max-width: 430px; margin-top: 34px; font-size: 15px; line-height: 2.05; letter-spacing: .015em; color: #b7b9b1; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 31px; }
+    .hero-note { margin-top: 58px; border-top: 1px solid var(--edge-dark); padding-top: 18px; display: flex; gap: 20px; align-items: center; color: #989b91; font-size: 10px; letter-spacing: .08em; }
+    .hero-note strong { font-size: 12px; color: var(--white); }
+    .hero-art { position: relative; min-height: 590px; display: grid; place-items: center; }
+    .art-ring { position: absolute; border: 1px solid rgba(215,253,81,.22); border-radius: 50%; width: 95%; aspect-ratio: 1; transform: rotate(-19deg) scaleX(.77); }
+    .art-ring.two { width: 114%; border-color: rgba(255,255,255,.07); transform: rotate(24deg) scaleX(.76); }
+    .art-card { isolation: isolate; width: min(400px,81%); aspect-ratio: .78; position: relative; background: #d4d7c4; transform: rotate(-9deg); box-shadow: 32px 35px 90px rgba(0,0,0,.42); overflow: hidden; }
+    .art-card::before { content: ""; position: absolute; top: -25%; left: -20%; width: 120%; aspect-ratio: 1; background: radial-gradient(circle at 55% 55%, #949e77 0 21%, #364032 22% 36%, #b0b69e 37% 57%, transparent 58%); border-radius: 50%; mix-blend-mode: multiply; }
+    .art-card::after { content: ""; position: absolute; width: 55%; aspect-ratio: 1; border: 38px solid var(--ink); right: -19%; bottom: 6%; border-radius: 50%; transform: rotate(17deg) scaleX(.7); opacity: .88; }
+    .art-card-top { position: absolute; z-index: 2; inset: 22px 22px auto; display: flex; justify-content: space-between; color: #121710; font-size: 10px; letter-spacing: .16em; font-weight: 700; }
+    .art-card-type { position: absolute; z-index: 3; left: 27px; bottom: 19px; font-size: clamp(58px,6.5vw,100px); font-weight: 900; line-height: .75; letter-spacing: -.09em; color: #d7fd51; mix-blend-mode: normal; }
+    .art-sticker { position: absolute; z-index: 4; right: 0; bottom: 12%; padding: 12px 18px; transform: rotate(11deg) translateX(13%); background: var(--accent); color: var(--ink); font-size: 12px; font-weight: 850; letter-spacing: .15em; box-shadow: 0 12px 30px rgba(0,0,0,.2); }
+    .art-side { position: absolute; top: 19%; right: -1%; writing-mode: vertical-rl; font-size: 10px; letter-spacing: .35em; color: #b4b8aa; }
+    .hero-bottom { position: absolute; bottom: 27px; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: #83867d; letter-spacing: .15em; }
+    .hero-bottom a { display: flex; align-items: center; gap: 8px; }
+    .hero-bottom a span { color: var(--accent); font-size: 19px; }
+    .marquee { overflow: hidden; border-top: 1px solid var(--edge-dark); border-bottom: 1px solid var(--edge-dark); background: var(--ink-2); white-space: nowrap; }
+    .marquee-track { padding: 17px 0; display: flex; width: max-content; animation: marquee 32s linear infinite; }
+    .marquee-track span { padding-right: 56px; font-size: 12px; font-weight: 700; letter-spacing: .16em; color: #b5b8ae; }
+    .marquee-track b { color: var(--accent); font-weight: 700; padding-right: 56px; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+    section[id] { scroll-margin-top: 72px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 35px; margin-bottom: 55px; }
+    .section-head h2 { font-size: clamp(39px, 5.3vw, 72px); font-weight: 730; line-height: 1.22; letter-spacing: -.075em; margin: 17px 0 0; }
+    .section-head .aside { max-width: 315px; color: var(--mid); font-size: 13px; line-height: 2; }
+    .section-head .aside.light { color: var(--muted); }
+    .directory { background: var(--paper); color: var(--ink); padding: 110px 0 128px; }
+    .directory .section-head h2 span { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.09em; }
+    .brand-toolbar { border-top: 1px solid var(--edge-light); border-bottom: 1px solid var(--edge-light); padding: 18px 0; display: flex; gap: 30px; align-items: center; justify-content: space-between; }
+    .brand-tabs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .brand-tabs button { background: transparent; border: 1px solid transparent; padding: 8px 13px; font-size: 12px; color: #66695e; }
+    .brand-tabs button[aria-pressed="true"], .brand-tabs button:hover { border-color: #171915; color: #171915; }
+    .search-wrap { display: flex; gap: 9px; align-items: center; border-bottom: 1px solid #73766b; flex: 0 0 215px; padding: 5px 0; }
+    .search-wrap label { font-size: 20px; transform: rotate(-40deg); }
+    .search-wrap input { border: 0; outline: 0; background: transparent; width: 100%; font-size: 12px; color: var(--ink); }
+    .search-wrap input::placeholder { color: #8d8e86; }
+    .directory-status { display: flex; justify-content: space-between; gap: 15px; margin: 18px 0 23px; font-size: 11px; color: #777a70; letter-spacing: .07em; }
+    .directory-empty { display: grid; grid-template-columns: .94fr 1.06fr; border: 1px solid var(--edge-light); min-height: 440px; overflow: hidden; }
+    .empty-message { padding: 48px min(5vw,66px); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+    .empty-message .mini { font-size: 11px; color: #5e6256; letter-spacing: .18em; font-weight: 700; }
+    .empty-message h3 { margin: 27px 0 17px; font-size: clamp(29px,3.1vw,48px); line-height: 1.38; letter-spacing: -.06em; }
+    .empty-message p { max-width: 390px; font-size: 13px; color: #6f7169; line-height: 2; margin: 0 0 32px; }
+    .empty-art { background: #c9ceba; color: var(--ink); min-height: 390px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .empty-art::before { content: ""; position: absolute; width: 82%; aspect-ratio: 1; border: 1px solid rgba(17,18,16,.24); border-radius: 50%; transform: scaleX(.66) rotate(-35deg); }
+    .empty-art::after { content: ""; position: absolute; width: 70%; aspect-ratio: 1; border: 1px solid rgba(17,18,16,.19); border-radius: 50%; transform: scaleX(.67) rotate(35deg); }
+    .empty-art .coming { position: relative; z-index: 1; font-size: clamp(64px,8vw,137px); letter-spacing: -.1em; font-weight: 900; line-height: .78; text-align: center; transform: rotate(-11deg); }
+    .empty-art .coming small { display: block; font-size: 12px; letter-spacing: .3em; font-weight: 600; margin-top: 30px; transform: rotate(11deg); }
+    .empty-art .art-label { position: absolute; left: 25px; top: 23px; font-size: 11px; letter-spacing: .1em; }
+    .empty-art .art-label.right { left: auto; right: 24px; bottom: 22px; top: auto; }
+    .brand-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .brand-card { cursor: pointer; border: 1px solid var(--edge-light); background: #e8e7df; color: var(--ink); text-align: left; padding: 0; overflow: hidden; }
+    .brand-card:hover .brand-cover { transform: scale(1.035); }
+    .brand-cover { aspect-ratio: 4/3; background: #c3c9b1; display: grid; place-items: center; font-size: 50px; font-weight: 800; overflow: hidden; transition: transform .4s var(--ease); }
+    .brand-cover img { width: 100%; height: 100%; object-fit: cover; }
+    .brand-card-meta { padding: 21px; }
+    .brand-card-meta h3 { margin: 0 0 8px; font-size: 21px; }
+    .brand-card-meta p { margin: 0; font-size: 12px; color: var(--mid); }
+    .brand-card-meta small { display: block; margin-top: 12px; font-size: 10px; color: var(--mid); }
+    .manifesto { padding: 120px 0; background: var(--ink); }
+    .manifesto-grid { display: grid; grid-template-columns: .4fr 1fr; column-gap: 9vw; }
+    .manifesto-copy { padding-top: 6px; }
+    .manifesto-big { font-size: clamp(32px,4.75vw,69px); letter-spacing: -.066em; line-height: 1.49; margin: 0; font-weight: 550; }
+    .manifesto-big em { font-style: normal; color: var(--accent); }
+    .manifesto-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; border-top: 1px solid var(--edge-dark); margin-top: 56px; padding-top: 26px; }
+    .manifesto-detail p { margin: 0; font-size: 13px; line-height: 2.15; color: var(--muted); }
+    .manifesto-detail strong { color: var(--white); }
+    .standards { background: #dce0cf; color: var(--ink); padding: 104px 0 120px; }
+    .standards .section-head { margin-bottom: 44px; }
+    .standards .section-head .aside { max-width: 320px; }
+    .standards-grid { border-top: 1px solid var(--edge-light); display: grid; grid-template-columns: repeat(4,1fr); }
+    .standard { min-height: 248px; border-right: 1px solid var(--edge-light); padding: 26px 27px 14px 0; margin-right: 27px; }
+    .standard:last-child { border-right: none; margin-right: 0; }
+    .standard .no { font-size: 11px; color: #6b7064; }
+    .standard h3 { font-size: 22px; line-height: 1.4; letter-spacing: -.03em; margin: 41px 0 16px; }
+    .standard p { font-size: 12px; color: #585d54; line-height: 2; }
+    .standards-note { margin-top: 33px; font-size: 11px; color: #686d60; line-height: 1.8; }
+    .community { background: var(--ink-2); color: var(--white); padding: 116px 0 120px; }
+    .community .section-head { margin-bottom: 28px; }
+    .community-headline { max-width: 650px; }
+    .community-summary { display: flex; align-items: center; gap: 13px; border-bottom: 1px solid var(--edge-dark); padding-bottom: 34px; font-size: 12px; color: #aeb0a8; line-height: 1.8; }
+    .demo-marker { padding: 5px 9px; color: var(--accent); border: 1px solid #6d7937; font-size: 10px; letter-spacing: .11em; white-space: nowrap; }
+    .community-layout { margin-top: 45px; display: grid; grid-template-columns: minmax(290px, .84fr) 1.16fr; gap: 40px; align-items: start; }
+    .composer { padding: 31px; border: 1px solid var(--edge-dark); background: #1c1e1a; }
+    .composer h3 { font-size: 24px; margin: 0 0 7px; letter-spacing: -.035em; }
+    .composer-lead { font-size: 12px; line-height: 1.85; margin: 0 0 24px; color: var(--muted); }
+    .field { margin-bottom: 17px; }
+    .field label { display: block; color: #bfc1b7; font-size: 11px; letter-spacing: .02em; margin-bottom: 8px; }
+    .field input, .field select, .field textarea { width: 100%; background: #121410; border: 1px solid #373a32; border-radius: 1px; color: var(--white); padding: 12px 13px; font-size: 13px; outline: 0; }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--accent); }
+    .field textarea { min-height: 118px; resize: vertical; }
+    .field input::placeholder, .field textarea::placeholder { color: #70736b; }
+    .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath stroke='%23b3b7a9' stroke-width='1.5' fill='none' d='m3 5 4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+    .field .upload { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px; border: 1px dashed #505348; background: #151713; cursor: pointer; font-size: 12px; color: #bec0b6; }
+    .field .upload input { position: absolute; opacity: 0; height: 1px; width: 1px; pointer-events: none; }
+    .field .upload strong { font-size: 20px; font-weight: 400; }
+    .upload-preview { margin-top: 11px; display: none; align-items: center; gap: 10px; font-size: 11px; color: var(--muted); }
+    .upload-preview.visible { display: flex; }
+    .upload-preview img { max-width: 78px; max-height: 78px; object-fit: cover; }
+    .composer .button { width: 100%; margin-top: 4px; }
+    .fineprint { font-size: 11px; color: #85897e; line-height: 1.8; margin: 14px 0 0; }
+    .form-message { font-size: 12px; line-height: 1.7; min-height: 0; margin-top: 10px; color: var(--accent); }
+    .feed-top { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 17px; }
+    .feed-top h3 { font-size: 22px; margin: 0; font-weight: 600; letter-spacing: -.04em; }
+    .feed-top span { font-size: 11px; color: var(--muted); }
+    .feed-tabs { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 22px; }
+    .feed-tabs button { color: var(--muted); font-size: 12px; border: 1px solid #45483f; background: transparent; padding: 8px 15px; }
+    .feed-tabs button[aria-pressed="true"], .feed-tabs button:hover { color: var(--ink); background: var(--white); border-color: var(--white); }
+    .feed-empty { border: 1px solid var(--edge-dark); min-height: 380px; padding: 52px 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: radial-gradient(ellipse at 50% 50%,#22261d,transparent 67%); }
+    .feed-empty .glyph { font-size: 110px; line-height: 1; font-weight: 800; letter-spacing: -.15em; color: #5a6550; transform: rotate(-12deg); }
+    .feed-empty h4 { font-size: 24px; font-weight: 600; letter-spacing: -.04em; margin: 15px 0 9px; }
+    .feed-empty p { font-size: 12px; color: var(--muted); max-width: 320px; line-height: 2; }
+    .post { border: 1px solid var(--edge-dark); margin-bottom: 17px; padding: 24px; background: #1e201c; }
+    .post-top { display: flex; align-items: center; gap: 11px; }
+    .avatar { width: 40px; height: 40px; display: grid; place-items: center; flex-shrink: 0; color: var(--ink); background: #c1c9ad; font-size: 13px; font-weight: 800; }
+    .post-name { font-size: 13px; font-weight: 700; }
+    .post-meta { font-size: 11px; color: var(--muted); }
+    .post-tag { margin-left: auto; font-size: 11px; border: 1px solid #43483b; padding: 5px 8px; color: #c6cabd; }
+    .post h4 { margin: 22px 0 9px; font-size: 21px; font-weight: 650; }
+    .post-copy { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; line-height: 1.85; color: #bcbeb5; }
+    .post-image { margin-top: 18px; width: 100%; max-height: 450px; object-fit: contain; background: #111210; }
+    .post-actions { margin-top: 22px; padding: 13px 0 0; border-top: 1px solid var(--edge-dark); display: flex; gap: 18px; align-items: center; }
+    .post-actions button { border: 0; padding: 2px 0; color: #b3b5ad; background: transparent; font-size: 12px; }
+    .post-actions button:hover, .post-actions button.liked { color: var(--accent); }
+    .post-actions .remove-post { margin-left: auto; color: #81847b; }
+    .comment-list { margin: 15px 0; display: grid; gap: 7px; }
+    .comment { border-left: 2px solid #51574b; padding: 7px 10px; background: #272923; overflow-wrap: anywhere; font-size: 11px; color: #b3b6ab; }
+    .comment b { color: var(--white); }
+    .comment-form { display: flex; gap: 7px; margin-top: 12px; }
+    .comment-form input { flex: 1; min-width: 0; border: 1px solid #42463c; background: #161812; color: var(--white); font-size: 12px; padding: 10px; }
+    .comment-form button { background: transparent; border: 1px solid #63695a; color: var(--white); padding: 8px 11px; font-size: 11px; }
+    .apply { padding: 118px 0 123px; background: var(--paper); color: var(--ink); }
+    .apply-grid { display: grid; grid-template-columns: minmax(270px,.8fr) 1.2fr; gap: clamp(38px,7vw,110px); }
+    .apply-intro h2 { margin: 21px 0 23px; font-size: clamp(40px,4.7vw,70px); line-height: 1.33; letter-spacing: -.079em; }
+    .apply-intro p { color: #64675d; font-size: 13px; line-height: 2.1; max-width: 360px; }
+    .apply-steps { display: grid; gap: 21px; border-top: 1px solid var(--edge-light); margin-top: 39px; padding-top: 25px; }
+    .apply-step { display: flex; gap: 18px; align-items: start; font-size: 12px; color: #4d5147; }
+    .apply-step span { color: #85897c; font-size: 10px; margin-top: 4px; }
+    .apply-form { border: 1px solid var(--edge-light); padding: clamp(23px,3.5vw,46px); background: var(--cream); }
+    .apply-form h3 { margin: 0 0 8px; font-size: 25px; letter-spacing: -.04em; }
+    .apply-form .form-help { font-size: 12px; color: #777970; line-height: 1.8; margin: 0 0 27px; }
+    .apply-form .field label { color: #42453d; }
+    .apply-form .field input, .apply-form .field textarea, .apply-form .field select { background: transparent; color: var(--ink); border: 1px solid #cbd0c5; }
+    .apply-form .field input::placeholder, .apply-form .field textarea::placeholder { color: #979b90; }
+    .apply-form .field input:focus, .apply-form .field textarea:focus, .apply-form .field select:focus { border-color: #525e3e; }
+    .apply-form .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath stroke='%23505548' stroke-width='1.5' fill='none' d='m3 5 4 4 4-4'/%3E%3C/svg%3E"); }
+    .field-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .required { color: #7b914b; }
+    .apply-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .apply-actions button { flex: 1; min-width: 175px; }
+    .apply-info { margin: 14px 0 0; color: #74776c; font-size: 11px; line-height: 1.9; }
+    .apply-form .form-message { color: #364a0e; }
+    .bottom-cta { background: #d7fd51; color: var(--ink); padding: 53px 0; }
+    .bottom-cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+    .bottom-cta strong { font-size: clamp(25px,3.6vw,48px); letter-spacing: -.068em; }
+    footer { background: #0c0d0b; padding: 64px 0 24px; }
+    .footer-main { display: flex; gap: 50px; justify-content: space-between; align-items: flex-start; }
+    .footer-brand .wordmark { font-size: 42px; }
+    .footer-brand p { color: #85887e; font-size: 12px; line-height: 2.1; max-width: 320px; }
+    .footer-links { display: flex; gap: clamp(30px,6vw,100px); }
+    .footer-links h3 { font-size: 11px; font-weight: 700; letter-spacing: .1em; color: #85887e; margin: 0 0 17px; }
+    .footer-links a { display: block; color: #c0c2ba; font-size: 12px; margin: 0 0 13px; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom { margin-top: 74px; border-top: 1px solid var(--edge-dark); padding-top: 21px; display: flex; gap: 24px; justify-content: space-between; font-size: 10px; color: #77796f; line-height: 1.8; }
+    .back-top { position: fixed; right: 24px; bottom: 24px; z-index: 30; display: none; width: 44px; height: 44px; border: 1px solid #62665b; background: #1c1e19; color: var(--white); font-size: 20px; }
+    .back-top.visible { display: block; }
+    dialog { max-width: 630px; width: calc(100% - 32px); padding: 34px; background: var(--paper); color: var(--ink); border: 0; box-shadow: 0 30px 100px rgba(0,0,0,.5); }
+    dialog::backdrop { background: rgba(0,0,0,.75); backdrop-filter: blur(5px); }
+    .dialog-close { position: absolute; top: 16px; right: 17px; font-size: 22px; background: transparent; border: 0; }
+    .dialog-body h2 { font-size: 39px; letter-spacing: -.05em; margin: 14px 0; }
+    .dialog-body h3 { font-size: 12px; letter-spacing: .08em; margin: 25px 0 8px; }
+    .dialog-body p { font-size: 14px; color: #60645b; white-space: pre-wrap; line-height: 2; }
+    .dialog-links { display: flex; gap: 9px; flex-wrap: wrap; }
+    .dialog-links a { padding: 8px 15px; background: var(--ink); color: var(--white); font-size: 12px; }
+    [hidden] { display: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 1050px) {
+      :root { --page: min(100% - 60px, 1000px); }
+      .hero h1 { font-size: clamp(60px,8vw,90px); }
+      .hero-art { min-height: 520px; }
+      .standards-grid { grid-template-columns: repeat(2,1fr); row-gap: 16px; }
+      .standard:nth-child(2) { border-right: 0; margin-right: 0; }
+      .standard { min-height: 195px; }
+    }
+    @media (max-width: 760px) {
+      :root { --page: calc(100% - 40px); }
+      .topbar { height: 66px; }
+      .topbar.compact { height: 66px; }
+      .topbar-inner { gap: 15px; }
+      .wordmark { font-size: 25px; }
+      .nav-apply { margin-left: auto; padding: 9px 10px; }
+      .menu-toggle { display: block; }
+      .main-nav { position: fixed; top: 66px; left: 0; right: 0; margin: 0; height: calc(100dvh - 66px); background: #121410; padding: 38px 26px; flex-direction: column; align-items: flex-start; gap: 0; transform: translateX(105%); transition: transform .35s var(--ease); }
+      .main-nav.open { transform: translateX(0); }
+      .main-nav a { padding: 20px 0; font-size: 21px; border-bottom: 1px solid var(--edge-dark); width: 100%; }
+      .hero { min-height: auto; padding-top: 66px; }
+      .hero-inner { min-height: 0; grid-template-columns: 1fr; gap: 15px; padding: 87px 0 85px; }
+      .hero-copy .eyebrow { margin-bottom: 24px; }
+      .hero h1 { font-size: clamp(62px,13vw,100px); }
+      .hero-lead { margin-top: 23px; font-size: 13px; }
+      .hero-note { margin-top: 37px; }
+      .hero-art { min-height: 400px; margin-top: 15px; }
+      .art-card { max-width: 310px; }
+      .art-card-type { font-size: 78px; }
+      .art-side { right: 2%; }
+      .hero-bottom { bottom: 21px; }
+      .directory, .manifesto, .community, .apply { padding: 78px 0 87px; }
+      .standards { padding: 78px 0 82px; }
+      .section-head { display: block; margin-bottom: 31px; }
+      .section-head h2 { font-size: clamp(40px, 9vw, 62px); }
+      .section-head .aside { margin-top: 19px; }
+      .brand-toolbar { flex-direction: column; align-items: stretch; gap: 14px; }
+      .search-wrap { flex-basis: auto; }
+      .directory-empty { grid-template-columns: 1fr; }
+      .empty-message { min-height: 350px; padding: 35px 27px; }
+      .empty-art { min-height: 300px; }
+      .empty-art .coming { font-size: clamp(68px,14vw,120px); }
+      .brand-grid { grid-template-columns: repeat(2,1fr); }
+      .manifesto-grid { grid-template-columns: 1fr; gap: 25px; }
+      .manifesto-big { font-size: clamp(37px,7vw,59px); }
+      .manifesto-detail { margin-top: 35px; }
+      .community-layout, .apply-grid { grid-template-columns: 1fr; gap: 36px; }
+      .community-summary { align-items: start; }
+      .footer-main { display: block; }
+      .footer-links { margin-top: 34px; }
+      .bottom-cta-inner { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 460px) {
+      .hero h1 { font-size: 60px; }
+      .hero-art { min-height: 320px; }
+      .art-card { width: 78%; }
+      .art-card-type { font-size: 60px; }
+      .art-sticker { font-size: 9px; }
+      .brand-tabs { gap: 3px; }
+      .brand-tabs button { padding: 6px 9px; font-size: 11px; }
+      .brand-grid { grid-template-columns: 1fr; }
+      .manifesto-detail, .field-pair { grid-template-columns: 1fr; }
+      .standards-grid { grid-template-columns: 1fr; }
+      .standard { border-right: 0; border-bottom: 1px solid var(--edge-light); margin-right: 0; min-height: 150px; }
+      .standard h3 { margin: 20px 0 8px; }
+      .composer, .apply-form { padding: 22px; }
+      .footer-links { gap: 26px; }
+      .footer-bottom { flex-direction: column; gap: 7px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *,*::before,*::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
-
-<a href="#main" class="skip">跳到主要内容</a>
-
-<nav id="nav"><div class="ni">
-  <a href="#" class="lo">TUY</a>
-  <button class="br" id="br2" aria-label="菜单" aria-expanded="false">☰</button>
-  <ul class="nl" id="nl2">
-    <li><a href="#curated">甄选</a></li>
-    <li><a href="#apply">入驻</a></li>
-    <li><a href="#about">关于</a></li>
-  </ul>
-</div></nav>
-
-<main id="main">
-
-<!-- HERO -->
-<section class="he">
-  <h1>原创设计<br><span>值得被看见</span></h1>
-  <p class="sub">TUY 收录小众原创品牌，不做销售，只做甄选与导流。把流量还给创作者。</p>
-  <div class="hb">
-    <a href="#apply" class="bn bp">申请入驻</a>
-    <a href="#curated" class="bn bg2">了解甄选</a>
-  </div>
-</section>
-
-<!-- CURATED / EMPTY -->
-<section id="curated"><div class="ct rv">
-  <div class="sh"><h2>收录品牌</h2><p>目前暂未开放公开展示，入驻审核通过后陆续上线。</p></div>
-  <div class="es">
-    <div class="ic">◇</div>
-    <h3>品牌即将登场</h3>
-    <p>我们正在逐一审核申请中的原创设计品牌，通过品控后将在此展示品牌故事、用料工艺与官方购买渠道。</p>
-    <a href="#apply" class="bn bp">我是品牌方 →</a>
-  </div>
-</div></section>
-
-<!-- APPLY -->
-<section id="apply" style="background:var(--sf)"><div class="ct rv">
-  <div class="sh"><h2>申请入驻</h2><p>服装 · 鞋履 · 包袋 · 首饰 · 配饰 · 生活方式</p></div>
-  <form class="fg" id="af" novalidate>
-    <div class="fd"><label class="fl">品牌名称 *</label><input name="name" required autocomplete="organization"></div>
-    <div class="fd"><label class="fl">品类 *</label>
-      <select name="cat" required><option value="">请选择</option><option>服装</option><option>鞋履</option><option>包袋</option><option>首饰</option><option>配饰</option><option>生活方式</option></select>
+  <header class="topbar" id="topbar">
+    <div class="topbar-inner">
+      <a class="wordmark" href="#home" aria-label="TUY 首页">TUY<span>.</span><sup>®</sup></a>
+      <nav class="main-nav" id="mainNav" aria-label="主导航">
+        <a href="#discover">发现品牌</a>
+        <a href="#why-tuy">关于 TUY</a>
+        <a href="#standards">收录标准</a>
+        <a href="#community">风格社区</a>
+      </nav>
+      <a href="#apply" class="nav-apply">品牌入驻 ↗</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mainNav">☰</button>
     </div>
-    <div class="fd"><label class="fl">联系人 *</label><input name="contact" required autocomplete="name"></div>
-    <div class="fd"><label class="fl">微信或邮箱 *</label><input name="way" required autocomplete="email"></div>
-    <div class="fd"><label class="fl">店铺链接</label><input name="url" placeholder="淘宝 / 小红书 / 官网 / 抖音等"></div>
-    <div class="fd"><label class="fl">品牌故事与用料</label><textarea name="story" rows="3" placeholder="讲讲你的设计理念、常用面料或工艺"></textarea></div>
-    <p class="fh">提交后我们会人工审核，通过后才会上线展示。所有品牌图与文案请确保为自有或已获授权。</p>
-    <button type="submit" class="bn bp" style="justify-self:start">提交申请</button>
-  </form>
-</div></section>
+  </header>
 
-<!-- ABOUT -->
-<section id="about"><div class="ct rv">
-  <div class="sh"><h2>关于 TUY</h2></div>
-  <div class="av">
-    <p>TUY 是一个为小众原创设计品牌搭建的展示与导流平台。<strong>不卖货、不抽佣</strong>，只做三件事：</p>
-    <p style="margin-top:12px">① <strong>甄选品控</strong> — 人工审核每一家申请品牌<br>② <strong>讲好故事</strong> — 呈现品牌理念、用料与工艺<br>③ <strong>导流回店</strong> — 把用户带回品牌的淘宝、官网、抖音</p>
-    <p style="margin-top:12px">社区功能（穿搭分享、评论）将在后续版本上线，敬请期待。</p>
-  </div>
-</div></section>
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">Independent by nature. Different by design.</div>
+          <h1>穿出属于<br><span class="thin">自己的</span><br><em>不同。</em></h1>
+          <p class="hero-lead">不是又一个购物网站。<br>这里收集值得被看见的原创设计，讲述品牌背后的想法、材质与细节，再带你去它真正的官方店铺。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#discover">探索独立设计 <span class="arrow">↗</span></a>
+            <a class="button outline" href="#community">进入风格社区 <span class="arrow">↗</span></a>
+          </div>
+          <div class="hero-note"><strong>TUY / ORIGINAL FIRST</strong><span>不卖货 · 不抽成 · 坚持独立设计</span></div>
+        </div>
+        <div class="hero-art" aria-label="TUY 品牌理念的抽象视觉海报" role="img">
+          <div class="art-ring"></div><div class="art-ring two"></div>
+          <div class="art-card"><div class="art-card-top"><span>THE UNDERGROUND YOUTH</span><span>ISSUE / 00</span></div><div class="art-card-type">T<br>U<br>Y.</div></div>
+          <div class="art-sticker">NOT FOR EVERYONE.</div>
+          <span class="art-side">ORIGINAL IS A POINT OF VIEW</span>
+        </div>
+        <div class="hero-bottom"><span>INDEPENDENT DESIGN DIRECTORY / 2026</span><a href="#discover">向下发现 <span>↓</span></a></div>
+      </div>
+    </section>
 
-</main>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track">
+      <span>ORIGINAL DESIGN</span><b>✳</b><span>DESIGNER-LED LABELS</span><b>✳</b><span>NO DIRECT SALES</span><b>✳</b><span>REAL STORIES, REAL MATERIALS</span><b>✳</b>
+      <span>ORIGINAL DESIGN</span><b>✳</b><span>DESIGNER-LED LABELS</span><b>✳</b><span>NO DIRECT SALES</span><b>✳</b><span>REAL STORIES, REAL MATERIALS</span><b>✳</b>
+    </div></div>
 
-<footer><p>© 2026 TUY</p></footer>
+    <section class="directory" id="discover">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="eyebrow">01 / Brand Directory</div><h2>好设计，不该<br><span>被算法埋没。</span></h2></div>
+          <p class="aside">我们不急着填满品牌名单。每一个出现在 TUY 的名字，都应该有属于自己的设计语言、可核对的渠道，以及值得讲述的故事。</p>
+        </div>
+        <div class="brand-toolbar reveal">
+          <div class="brand-tabs" id="brandTabs" role="group" aria-label="品牌品类筛选">
+            <button type="button" data-category="全部" aria-pressed="true">全部品牌</button>
+            <button type="button" data-category="服装" aria-pressed="false">服装</button>
+            <button type="button" data-category="首饰" aria-pressed="false">首饰</button>
+            <button type="button" data-category="配饰" aria-pressed="false">配饰</button>
+            <button type="button" data-category="鞋履" aria-pressed="false">鞋履</button>
+            <button type="button" data-category="包袋" aria-pressed="false">包袋</button>
+          </div>
+          <div class="search-wrap"><label for="brandSearch" aria-hidden="true">⌕</label><input id="brandSearch" type="search" placeholder="搜索品牌与设计风格" aria-label="搜索品牌"></div>
+        </div>
+        <div class="directory-status"><span id="brandCount">当前收录：0 个品牌</span><span>CURATED, NOT CROWDED.</span></div>
+        <div class="directory-empty reveal" id="brandEmpty">
+          <div class="empty-message"><span class="mini">OPEN CALL / 品牌招募中</span><h3>第一个名字，<br>留给真正的原创。</h3><p>目前还没有正式入驻的品牌。TUY 正在开启首批独立设计品牌征集；通过审核之后，品牌故事、作品与官方渠道会在这里真实呈现。</p><a href="#apply" class="button dark">成为首批入驻品牌 <span class="arrow">↗</span></a></div>
+          <div class="empty-art"><span class="art-label">SPACE RESERVED FOR ORIGINALS</span><div class="coming">COMING<br>SOON<small>NOTHING FAKE. NOTHING FILLED.</small></div><span class="art-label right">TUY / 00</span></div>
+        </div>
+        <div class="brand-grid" id="brandGrid" hidden></div>
+      </div>
+    </section>
 
-<!-- MODAL -->
-<div class="ov" id="fm"><div class="md" id="fmb">
-  <button class="mx" data-x aria-label="关闭">✕</button>
-  <h3>申请已提交</h3>
-  <div class="st">我们会在 3–7 个工作日内审核，结果将通过你留下的联系方式告知。<br><br>当前版本为前端演示，数据尚未接入服务器，后续连接后台后将自动入库。</div>
-</div></div>
+    <section class="manifesto" id="why-tuy">
+      <div class="container manifesto-grid">
+        <div class="manifesto-copy reveal"><div class="eyebrow lime">02 / Our Point of View</div></div>
+        <div class="reveal"><h2 class="manifesto-big">风格可以相似，<br>但创作的诚意<em>不可复制。</em><br>我们相信，小众不是标签，<br>而是一种选择。</h2>
+          <div class="manifesto-detail"><p><strong>对于寻找风格的人：</strong><br>不只看到商品名称，更能理解设计灵感、面料质感和背后的制作过程，并直接找到品牌官方渠道。</p><p><strong>对于认真创作的人：</strong><br>拥有一个不依靠销量排序、不需要与仿款混杂的展示空间，让设计本身成为被发现的理由。</p></div>
+        </div>
+      </div>
+    </section>
 
-<script>
-'use strict';
-const Q=s=>document.querySelector(s),A=s=>document.querySelectorAll(s);
+    <section class="standards" id="standards">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="eyebrow">03 / Selection Principles</div><h2>我们的判断，<br>不止于好看。</h2></div><p class="aside">TUY 将以人工筛选建立品牌目录。以下是计划采用的基础收录方向，而非对任何尚未加入品牌的认证声明。</p></div>
+        <div class="standards-grid reveal">
+          <article class="standard"><span class="no">CRITERION / 01</span><h3>原创设计能力</h3><p>关注独立设计过程、作品迭代，以及能够说明原创来源的合理材料。</p></article>
+          <article class="standard"><span class="no">CRITERION / 02</span><h3>真实品牌故事</h3><p>让主理人说清品牌为什么存在、想表达什么，以及设计的出发点。</p></article>
+          <article class="standard"><span class="no">CRITERION / 03</span><h3>材质与工艺透明</h3><p>鼓励如实说明面料成分、制作方式、工艺细节及可以提供的佐证。</p></article>
+          <article class="standard"><span class="no">CRITERION / 04</span><h3>官方渠道可核对</h3><p>收录品牌自主提供并可核实的店铺或官网链接。TUY 本身不承接交易。</p></article>
+        </div>
+        <p class="standards-note">* 人工审阅用于提升信息质量，不等于版权确权、质量检测、法律担保或对交易作出保证。商品售后与交易由对应品牌和其销售平台负责。</p>
+      </div>
+    </section>
 
-/* ── NAV ── */
-const br2=Q("#br2"),nl2=Q("#nl2");
-br2.onclick=()=>{const o=nl2.classList.toggle("o");br2.setAttribute("aria-expanded",o);};
-nl2.onclick=e=>{if(e.target.tagName==="A")nl2.classList.remove("o");};
+    <section class="community" id="community">
+      <div class="container">
+        <div class="section-head reveal"><div class="community-headline"><div class="eyebrow lime">04 / Style Community</div><h2>不只是穿搭。<br>是你的表达方式。</h2></div><p class="aside light">分享今日搭配、灵感手记和你欣赏的设计。未来这里会成为品牌与穿着者之间真正可以对话的地方。</p></div>
+        <div class="community-summary reveal"><span class="demo-marker">本地体验版</span><span>可以发布作品、上传图片、点赞和评论；内容仅保存在当前浏览器，其他访客不可见。公开社区需连接服务器后上线。</span></div>
+        <div class="community-layout">
+          <form class="composer reveal" id="postForm">
+            <h3>留下你的风格档案 ↗</h3><p class="composer-lead">先在这里体验创作流程。我们不会把你本地写下的内容伪装成网站已有的公开社区内容。</p>
+            <div class="field"><label for="author">你的昵称 *</label><input id="author" name="author" required maxlength="24" placeholder="怎么称呼你？"></div>
+            <div class="field"><label for="postType">分享类型 *</label><select id="postType" name="type"><option value="穿搭记录">穿搭记录</option><option value="设计灵感">设计灵感</option><option value="品牌发现">品牌发现</option></select></div>
+            <div class="field"><label for="postTitle">作品标题 *</label><input id="postTitle" name="title" required maxlength="70" placeholder="给这次分享取个名字"></div>
+            <div class="field"><label for="postText">你的表达 *</label><textarea id="postText" name="content" required maxlength="1500" placeholder="今天穿了什么？灵感从哪里来？最想分享的细节是什么？"></textarea></div>
+            <div class="field"><span class="muted" style="display:block;font-size:11px;margin-bottom:8px">附上一张照片（选填）</span><label for="postImage" class="upload"><span>＋ 选择图片 / JPG、PNG、WebP</span><strong>↗</strong><input type="file" id="postImage" accept="image/jpeg,image/png,image/webp"></label><div id="imagePreview" class="upload-preview"><img alt="待发布图片预览" id="previewImg"><span>图片已添加，仅作本地预览。</span></div></div>
+            <button class="button primary" type="submit">发布到本地预览 <span class="arrow">↗</span></button>
+            <p class="fineprint">公开发布、真实账号、云端图片、内容审核及跨用户互动，将在服务端接入后实现。</p>
+            <div class="form-message" role="status" id="postMessage" aria-live="polite"></div>
+          </form>
+          <div class="reveal"><div class="feed-top"><h3>风格现场 / FEED</h3><span id="postCount">0 条本地作品</span></div><div class="feed-tabs" id="feedTabs" role="group" aria-label="作品筛选"><button type="button" data-type="全部" aria-pressed="true">全部</button><button type="button" data-type="穿搭记录" aria-pressed="false">穿搭</button><button type="button" data-type="设计灵感" aria-pressed="false">灵感</button><button type="button" data-type="品牌发现" aria-pressed="false">品牌发现</button></div>
+            <div id="feed" aria-live="polite"><div class="feed-empty"><span class="glyph">✳</span><h4>下一份风格档案，由你开始。</h4><p>这里还没有本地作品。分享第一条穿搭或设计灵感，看看未来的 TUY 社区如何运作。</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-/* ── SCROLL ── */
-let tk=false;
-window.onscroll=()=>{if(!tk){requestAnimationFrame(()=>{
-  Q("#nav").classList.toggle("s",window.scrollY>40);
-  A(".rv").forEach(el=>{if(el.getBoundingClientRect().top<innerHeight-60)el.classList.add("v");});
-  tk=false;});tk=true;}};
+    <section class="apply" id="apply">
+      <div class="container apply-grid">
+        <div class="apply-intro reveal"><div class="eyebrow">05 / Open Call</div><h2>认真做设计的人，<br>值得一个<br>被看见的位置。</h2><p>无论是一人工作室，还是正在成长的独立品牌，只要愿意认真表达设计、公开材质和官方渠道，都欢迎向 TUY 介绍自己。</p>
+          <div class="apply-steps"><div class="apply-step"><span>01</span><div>发送品牌资料与官方渠道</div></div><div class="apply-step"><span>02</span><div>人工了解设计方向与原创依据</div></div><div class="apply-step"><span>03</span><div>审核通过后再展示品牌档案和跳转链接</div></div></div>
+        </div>
+        <form class="apply-form reveal" id="applyForm"><h3>品牌入驻意向</h3><p class="form-help">当前未连接服务器。填写后可使用你自己的邮件客户端发送到 TUY；不会出现虚假的“提交成功”。</p>
+          <div class="field-pair"><div class="field"><label for="brandName">品牌名称 <span class="required">*</span></label><input id="brandName" required maxlength="90" placeholder="你的品牌叫什么？"></div><div class="field"><label for="contactName">主理人 / 联系人 <span class="required">*</span></label><input id="contactName" required maxlength="60" placeholder="你的称呼"></div></div>
+          <div class="field-pair"><div class="field"><label for="contactEmail">联系邮箱 <span class="required">*</span></label><input type="email" id="contactEmail" required maxlength="120" placeholder="name@example.com"></div><div class="field"><label for="brandCategory">主要品类 <span class="required">*</span></label><select id="brandCategory" required><option value="">请选择</option><option>服装</option><option>首饰</option><option>配饰</option><option>鞋履</option><option>包袋</option><option>其他原创设计</option></select></div></div>
+          <div class="field"><label for="officialUrl">官方店铺 / 品牌官网链接 <span class="required">*</span></label><input type="url" id="officialUrl" required pattern="https://.*" title="请输入以 https:// 开头的完整网址" placeholder="https://...（淘宝、官网或其他官方渠道均可）"></div>
+          <div class="field"><label for="otherUrls">更多官方渠道（选填）</label><input id="otherUrls" maxlength="400" placeholder="小红书、抖音、作品集等链接或账号"></div>
+          <div class="field"><label for="brandStory">品牌故事与创作理念 <span class="required">*</span></label><textarea id="brandStory" required maxlength="2000" placeholder="你为什么开始这个品牌？设计理念和特色是什么？"></textarea></div>
+          <div class="field"><label for="brandMaterial">常用材质与制作工艺（选填）</label><textarea id="brandMaterial" maxlength="1200" placeholder="如面料成分、制作方式、工艺说明……"></textarea></div>
+          <div class="field"><label for="originalProof">原创设计说明（选填）</label><textarea id="originalProof" maxlength="1200" placeholder="如设计稿、打样过程、版权或其他原创依据；此处先写说明，无需上传文件"></textarea></div>
+          <div class="apply-actions"><button type="submit" class="button dark">通过邮件发送申请 <span class="arrow">↗</span></button><button type="button" id="copyApplication" class="button ghost-dark">复制申请资料 <span class="arrow">⧉</span></button></div>
+          <p class="apply-info">发送地址：<a id="applyEmail" href="/cdn-cgi/l/email-protection#502a292362606067616162691021217e333f3d" style="text-decoration:underline"><span class="__cf_email__" data-cfemail="a4deddd7969494939595969de4d5d58ac7cbc9">[email&#160;protected]</span></a>。点击发送仅打开邮件客户端，请在邮件中确认发送；若未配置邮件客户端，可复制资料后自行发送。请勿提交身份证件、密码或其他敏感信息。</p>
+          <div id="applyMessage" class="form-message" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
 
-/* ── MODAL ── */
-function om(id){Q("#"+id).classList.add("o");document.body.style.overflow="hidden";}
-function cm(){A(".ov.o").forEach(el=>el.classList.remove("o"));document.body.style.overflow="";}
-document.onclick=e=>{if(e.target.dataset.x||e.target.classList.contains("ov"))cm();};
-document.onkeydown=e=>{if(e.key==="Escape")cm();};
+    <div class="bottom-cta"><div class="container bottom-cta-inner"><strong>不追随所有人。只找到同路人。</strong><a href="#discover" class="button dark">回到品牌图鉴 <span class="arrow">↑</span></a></div></div>
+  </main>
 
-/* ── FORM ── */
-Q("#af").onsubmit=e=>{
-  e.preventDefault();
-  const ms=[...e.target.querySelectorAll("[required]")].filter(i=>!i.value.trim());
-  if(ms.length){ms.forEach(i=>i.style.borderColor="#fb7185");return;}
-  console.log(Object.fromEntries(new FormData(e.target)));
-  om("fm");e.target.reset();
-};
-Q("#af").oninput=e=>{e.target.style.borderColor="";}
+  <footer id="contact"><div class="container"><div class="footer-main"><div class="footer-brand"><a href="#home" class="wordmark">TUY<span>.</span></a><p>一个面向年轻人的独立设计品牌发现与表达空间。<br>拒绝虚假入驻，尊重原创，用信息和连接支持真实的创作者。</p></div><div class="footer-links"><div><h3>EXPLORE</h3><a href="#discover">发现品牌</a><a href="#community">风格社区</a><a href="#standards">收录标准</a></div><div><h3>CONNECT</h3><a href="#apply">申请入驻</a><a href="/cdn-cgi/l/email-protection#eb919298d9dbdbdcdadad9d2ab9a9ac5888486">邮件联系 ↗</a><a href="#why-tuy">关于我们</a></div></div></div><div class="footer-bottom"><span>© 2026 TUY. MADE FOR ORIGINAL MINDS.</span><span>本站不直接销售商品。社区当前为浏览器本地体验，品牌目录等待真实入驻。</span></div></div></footer>
+  <button class="back-top" id="backTop" title="回到顶部" aria-label="回到顶部">↑</button>
+  <dialog id="brandDialog" aria-label="品牌介绍"><button type="button" class="dialog-close" id="dialogClose" aria-label="关闭">×</button><div class="dialog-body"><div class="eyebrow">Independent Label / TUY</div><h2 id="dialogName"></h2><p id="dialogSummary"></p><h3>BRAND STORY / 品牌故事</h3><p id="dialogStory"></p><h3>MATERIALS / 材质与工艺</h3><p id="dialogMaterials"></p><h3>OFFICIAL CHANNELS / 官方渠道</h3><div class="dialog-links" id="dialogLinks"></div><p style="font-size:11px;margin-top:25px">TUY 不参与商品销售和支付；请以品牌官方渠道发布的信息为准。</p></div></dialog>
 
-/* ── INIT ── */
-A(".rv").forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add("v");});
-</script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  'use strict';
+  /* TUY v2: 独立静态版。未来服务端接通后，再替换品牌数据源、账号系统及社区 API。 */
+  const $ = (selector, parent=document) => parent.querySelector(selector);
+  const $$ = (selector, parent=document) => [...parent.querySelectorAll(selector)];
+  const SAFE_URL = /^https:\/\//i;
+  const MAIL_TO = 'zys20071129@qq.com'; // 沿用上一版页面中的合作邮箱，部署前请确认是否仍使用。
+
+  // 目前没有实际入驻品牌。切勿用示例品牌填充公开目录。
+  // 后续从“已审核通过”的后端接口获取，例如：
+  // [{id, name, category, summary, story, materials, cover, links:[{label,url}]}]
+  const BRANDS = [];
+  const brandState = {category:'全部', query:''};
+  const categoryButtons = $$('#brandTabs button');
+
+  function safeHttpUrl(value) {
+    try { const url = new URL(value); return SAFE_URL.test(url.href) ? url.href : null; }
+    catch { return null; }
+  }
+  function createEl(tag, className, text) {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (text !== undefined) el.textContent = String(text);
+    return el;
+  }
+  function revealSetup() {
+    const items = $$('.reveal');
+    if (!('IntersectionObserver' in window)) { items.forEach(x => x.classList.add('visible')); return; }
+    const io = new IntersectionObserver(entries => entries.forEach(({target,isIntersecting}) => {
+      if (isIntersecting) { target.classList.add('visible'); io.unobserve(target); }
+    }), {threshold:.08});
+    items.forEach(x => io.observe(x));
+  }
+  function renderBrands() {
+    const list = BRANDS.filter(b => (brandState.category==='全部' || b.category===brandState.category) &&
+      `${b.name||''} ${b.summary||''} ${b.category||''}`.toLowerCase().includes(brandState.query));
+    const grid = $('#brandGrid');
+    grid.replaceChildren();
+    $('#brandCount').textContent = `当前收录：${BRANDS.length} 个品牌`;
+    if (list.length === 0) {
+      grid.hidden = true;
+      $('#brandEmpty').hidden = false;
+      const message = $('.empty-message h3');
+      const desc = $('.empty-message p');
+      if (BRANDS.length) {
+        message.textContent = '暂时没有匹配的品牌。';
+        desc.textContent = '换一个关键词或品类，继续探索 TUY 收录的原创设计。';
+      } else {
+        message.innerHTML = '第一个名字，<br>留给真正的原创。';
+        desc.textContent = '目前还没有正式入驻的品牌。TUY 正在开启首批独立设计品牌征集；通过审核之后，品牌故事、作品与官方渠道会在这里真实呈现。';
+      }
+      return;
+    }
+    $('#brandEmpty').hidden = true;
+    grid.hidden = false;
+    list.forEach(b => {
+      const card = createEl('button','brand-card'); card.type='button'; card.setAttribute('aria-label',`查看 ${b.name} 品牌档案`);
+      const cover = createEl('div','brand-cover');
+      const coverUrl = safeHttpUrl(b.cover);
+      if (coverUrl) { const img = createEl('img'); img.loading='lazy'; img.src=coverUrl; img.alt=`${b.name} 品牌图片`; cover.append(img); }
+      else cover.textContent = String(b.name||'TUY').slice(0,2).toUpperCase();
+      const meta = createEl('div','brand-card-meta'); meta.append(createEl('h3','',b.name||''),createEl('p','',b.summary||''),createEl('small','',`${b.category||''} · 查看品牌档案 ↗`));
+      card.append(cover,meta); card.addEventListener('click',()=>openBrand(b)); grid.append(card);
+    });
+  }
+  function openBrand(brand) {
+    $('#dialogName').textContent = brand.name || '';
+    $('#dialogSummary').textContent = `${brand.category||''} · ${brand.summary||''}`;
+    $('#dialogStory').textContent = brand.story || '品牌资料完善中';
+    $('#dialogMaterials').textContent = brand.materials || '相关信息待品牌补充';
+    const links = $('#dialogLinks'); links.replaceChildren();
+    (brand.links||[]).forEach(link => {
+      const url = safeHttpUrl(link.url); if (!url) return;
+      const anchor=createEl('a','',`${link.label || '官方店铺'} ↗`);
+      anchor.href=url; anchor.target='_blank'; anchor.rel='noopener noreferrer nofollow'; links.append(anchor);
+    });
+    $('#brandDialog').showModal();
+  }
+  categoryButtons.forEach(btn => btn.addEventListener('click',()=>{
+    brandState.category = btn.dataset.category;
+    categoryButtons.forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));
+    renderBrands();
+  }));
+  $('#brandSearch').addEventListener('input',e=>{brandState.query=e.target.value.trim().toLowerCase();renderBrands();});
+  $('#dialogClose').addEventListener('click',()=>$('#brandDialog').close());
+  $('#brandDialog').addEventListener('click', e=>{ if(e.target===$('#brandDialog')) $('#brandDialog').close(); });
+  renderBrands();
+
+  const nav=$('#mainNav'), menuToggle=$('#menuToggle');
+  function setMenu(open){nav.classList.toggle('open',open);document.body.classList.toggle('menu-open',open);menuToggle.setAttribute('aria-expanded',String(open));menuToggle.textContent=open?'×':'☰';menuToggle.setAttribute('aria-label',open?'关闭菜单':'打开菜单');}
+  menuToggle.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));
+  $$('#mainNav a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape' && nav.classList.contains('open')) setMenu(false);});
+  window.addEventListener('resize',()=>{if(window.innerWidth>760 && nav.classList.contains('open')) setMenu(false);});
+  function updateScroll(){const y=window.scrollY;$('#topbar').classList.toggle('compact',y>60);$('#backTop').classList.toggle('visible',y>700);}
+  window.addEventListener('scroll',updateScroll,{passive:true});updateScroll();
+  $('#backTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  revealSetup();
+
+  /* 风格社区：仅在本浏览器留存的数据演示，不接入公网、不创建服务端账号。 */
+  const POSTS_KEY='tuy_v2_local_community_posts';
+  let posts=[];
+  try {
+    const raw=JSON.parse(localStorage.getItem(POSTS_KEY)||'[]');
+    if(Array.isArray(raw)) posts=raw.filter(p=>p && typeof p==='object' && typeof p.id==='string').slice(0,60);
+  } catch { posts=[]; }
+  let feedCategory='全部';
+  let stagedImage='';
+  function persistPosts(){
+    try { localStorage.setItem(POSTS_KEY,JSON.stringify(posts));return true; }
+    catch {return false;}
+  }
+  function formatDate(ts){
+    const date=new Date(ts);
+    if(!Number.isFinite(date.getTime())) return '本地记录';
+    return date.toLocaleString('zh-CN',{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+  }
+  function makePostCard(post){
+    const article=createEl('article','post');
+    const top=createEl('div','post-top');
+    const avatar=createEl('div','avatar',(post.author||'?').slice(0,2));
+    const nameBox=createEl('div'); nameBox.append(createEl('div','post-name',post.author||'匿名'),createEl('div','post-meta',formatDate(post.time)));
+    top.append(avatar,nameBox,createEl('div','post-tag',post.type||'穿搭记录'));
+    article.append(top,createEl('h4','',post.title||''),createEl('p','post-copy',post.content||''));
+    if(typeof post.image==='string' && /^data:image\/jpeg;base64,/.test(post.image)){
+      const img=createEl('img','post-image');img.src=post.image;img.alt=`${post.title||'作品'} 图片`;img.loading='lazy';article.append(img);
+    }
+    const actions=createEl('div','post-actions');
+    const like=createEl('button',post.liked?'liked':'',`${post.liked?'♥':'♡'} 喜欢 ${post.liked?1:0}`);
+    like.type='button';like.setAttribute('aria-pressed',String(!!post.liked));
+    like.addEventListener('click',()=>{post.liked=!post.liked;persistPosts();renderFeed();});
+    const commentCount=createEl('span','post-meta',`评论 ${(post.comments||[]).length}`);
+    const remove=createEl('button','remove-post','删除本地作品');remove.type='button';
+    remove.addEventListener('click',()=>{if(!window.confirm('确定删除这条仅保存在本浏览器中的作品吗？'))return;posts=posts.filter(p=>p.id!==post.id);persistPosts();renderFeed();});
+    actions.append(like,commentCount,remove);article.append(actions);
+    const list=createEl('div','comment-list');
+    (post.comments||[]).forEach(c=>{const line=createEl('div','comment');const bold=createEl('b','',`${c.author||'访客'}：`);line.append(bold,document.createTextNode(c.text||''));list.append(line);});
+    article.append(list);
+    const commentForm=createEl('form','comment-form');
+    const input=createEl('input');input.required=true;input.maxLength=220;input.placeholder='写一句本地评论…';input.setAttribute('aria-label','写评论');
+    const send=createEl('button','','评论 ↗');send.type='submit';commentForm.append(input,send);
+    commentForm.addEventListener('submit',e=>{e.preventDefault();const text=input.value.trim();if(!text)return;post.comments=post.comments||[];post.comments.push({author:'本地访客',text});const saved=persistPosts();$('#postMessage').textContent=saved?'本地评论已保存。':'存储空间不足，本次评论仅在当前页面有效。';renderFeed();});
+    article.append(commentForm);return article;
+  }
+  function renderFeed(){
+    const feed=$('#feed');feed.replaceChildren();
+    $('#postCount').textContent=`${posts.length} 条本地作品`;
+    const matches=posts.filter(p=>feedCategory==='全部'||p.type===feedCategory);
+    if(!matches.length){
+      const empty=createEl('div','feed-empty');empty.append(createEl('div','glyph','✳'),createEl('h4','',posts.length?'当前分类还没有本地作品。':'下一份风格档案，由你开始。'),createEl('p','',posts.length?'换个分类，或者继续写下你的灵感。':'这里还没有本地作品。分享第一条穿搭或设计灵感，看看未来的 TUY 社区如何运作。'));feed.append(empty);return;
+    }
+    matches.forEach(p=>feed.append(makePostCard(p)));
+  }
+  $$('#feedTabs button').forEach(button=>button.addEventListener('click',()=>{
+    feedCategory=button.dataset.type;
+    $$('#feedTabs button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+    renderFeed();
+  }));
+  async function compressImage(file){
+    if(!['image/jpeg','image/png','image/webp'].includes(file.type)) throw Error('请选择 JPG、PNG 或 WebP 图片。');
+    if(file.size>8*1024*1024) throw Error('图片请小于 8 MB。');
+    const objectURL=URL.createObjectURL(file);
+    try {
+      const image=new Image();
+      await new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(Error('图片读取失败，请更换图片。'));image.src=objectURL;});
+      const ratio=Math.min(1,900/Math.max(image.width,image.height));
+      const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(image.width*ratio));canvas.height=Math.max(1,Math.round(image.height*ratio));
+      const ctx=canvas.getContext('2d');if(!ctx) throw Error('当前浏览器无法处理图片。');
+      ctx.fillStyle='#f4f3ee';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(image,0,0,canvas.width,canvas.height);
+      return canvas.toDataURL('image/jpeg',.74);
+    } finally {URL.revokeObjectURL(objectURL);}
+  }
+  $('#postImage').addEventListener('change',async e=>{
+    const file=e.target.files && e.target.files[0];stagedImage='';$('#imagePreview').classList.remove('visible');
+    if(!file)return;
+    try {stagedImage=await compressImage(file);$('#previewImg').src=stagedImage;$('#imagePreview').classList.add('visible');$('#postMessage').textContent='图片准备完毕。';}
+    catch(err){$('#postMessage').textContent=err.message;e.target.value='';}
+  });
+  $('#postForm').addEventListener('submit',e=>{
+    e.preventDefault();const form=e.currentTarget;if(!form.reportValidity())return;
+    const author=$('#author').value.trim(),title=$('#postTitle').value.trim(),content=$('#postText').value.trim();
+    if(!author||!title||!content){$('#postMessage').textContent='请先填写完整的作品信息。';return;}
+    const id=typeof crypto!=='undefined' && crypto.randomUUID?crypto.randomUUID():`${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    posts.unshift({id,author,title,content,type:$('#postType').value,image:stagedImage,time:Date.now(),liked:false,comments:[]});
+    posts=posts.slice(0,60);
+    const saved=persistPosts();
+    form.reset();stagedImage='';$('#imagePreview').classList.remove('visible');
+    $('#postMessage').textContent=saved?'已添加到本地预览；只有当前浏览器可以看到。':'作品已显示，但浏览器存储空间不足，刷新后可能消失。';
+    feedCategory='全部';$$('#feedTabs button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.type==='全部')));
+    renderFeed();
+    if(window.innerWidth<761)$('#feed').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  renderFeed();
+
+  /* 品牌入驻：无后端时使用真正的 mailto，绝不冒充“表单已接收”。 */
+  const applyForm=$('#applyForm');
+  function buildApplication(){
+    return [
+      'TUY · 品牌入驻申请','',
+      `品牌名称：${$('#brandName').value.trim()}`,
+      `主理人/联系人：${$('#contactName').value.trim()}`,
+      `联系邮箱：${$('#contactEmail').value.trim()}`,
+      `主营品类：${$('#brandCategory').value}`,
+      `官方店铺/官网：${$('#officialUrl').value.trim()}`,
+      `其他官方渠道：${$('#otherUrls').value.trim()||'未填写'}`,
+      '', '【品牌故事与理念】',$('#brandStory').value.trim(),
+      '', '【常用材质与制作工艺】',$('#brandMaterial').value.trim()||'未填写',
+      '', '【原创设计说明】',$('#originalProof').value.trim()||'未填写',
+      '', '注：资料由申请人通过自己的邮件客户端主动发送；网站未进行自动上传。'
+    ].join('\n');
+  }
+  function checkApplication(){
+    if(!applyForm.reportValidity())return false;
+    if(!safeHttpUrl($('#officialUrl').value.trim())){
+      $('#applyMessage').textContent='官方渠道必须是完整的 https:// 链接。';$('#officialUrl').focus();return false;
+    }
+    return true;
+  }
+  applyForm.addEventListener('submit',e=>{
+    e.preventDefault();if(!checkApplication())return;
+    const subject=encodeURIComponent(`[TUY 品牌入驻] ${$('#brandName').value.trim()}`);
+    const body=encodeURIComponent(buildApplication());
+    $('#applyMessage').textContent='正在尝试打开邮件客户端；请在邮件窗口中点击“发送”。本网站不会自动收到申请。';
+    window.location.href=`mailto:${MAIL_TO}?subject=${subject}&body=${body}`;
+  });
+  $('#copyApplication').addEventListener('click',async()=>{
+    if(!checkApplication())return;
+    const txt=buildApplication();
+    try {
+      if(navigator.clipboard && window.isSecureContext)await navigator.clipboard.writeText(txt);
+      else {
+        const buffer=document.createElement('textarea');buffer.value=txt;buffer.style.position='fixed';buffer.style.left='-9999px';document.body.append(buffer);buffer.select();
+        const ok=document.execCommand('copy');buffer.remove();if(!ok)throw Error('无法复制');
+      }
+      $('#applyMessage').textContent=`申请资料已复制。请自行发送至 ${MAIL_TO}；复制不等于完成申请。`;
+    } catch {
+      $('#applyMessage').textContent='复制失败；可通过上方按钮打开邮件客户端，或手动复制表单中的内容。';
+    }
+  });
+  </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"7939e04a4baf43c8b86a560f74aac60e","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
